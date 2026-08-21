@@ -1,652 +1,242 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl" data-theme="light">
+<!doctype html>
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>הסולם — תצוגה פנימית לסקירה (Gate 01 / Madregot 01, 02, 03 &amp; 04)</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>הסולם — מסע לימוד בכתבי בעל הסולם</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- App Header -->
-  <header class="app-header" role="banner">
-    <div class="brand-container">
-      <h1 class="brand-title">הסולם</h1>
-      <span class="badge-demo" aria-label="מצב מערכת פנימי">INTERNAL REVIEW — NOT PUBLISHED</span>
-    </div>
-    <div class="header-controls">
-      <button id="themeToggle" class="btn-theme" aria-label="החלף מצב תצוגה יום או לילה" onclick="toggleTheme()">☀️ מצב בהיר / כהה</button>
-    </div>
-  </header>
-
-  <!-- App Main Layout -->
-  <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar-nav" role="navigation" aria-label="תפריט ניווט ראשי">
-      <button class="nav-item active" onclick="switchScreen('status')" id="nav-status">📊 סטטוס הפרויקט</button>
-      <button class="nav-item" onclick="switchScreen('constitution')" id="nav-constitution">📜 חוקת הספר</button>
-      <button class="nav-item" onclick="switchScreen('sources')" id="nav-sources">📚 רישום מקורות</button>
-      <button class="nav-item" onclick="switchScreen('transcript')" id="nav-transcript">🔍 אינדקס תמליל</button>
-      <button class="nav-item" onclick="switchScreen('ladder')" id="nav-ladder">🗺️ מפת הסולם</button>
-      <button class="nav-item" onclick="switchScreen('review')" id="nav-review">📥 תור סקירה</button>
-      <button class="nav-item" onclick="switchScreen('approvals')" id="nav-approvals">✍️ פנקס אישורים</button>
-      <button class="nav-item" onclick="switchScreen('demo-madrega')" id="nav-demo-madrega">📖 מדרגה 1 — לפני שהיה מי שיקבל</button>
-      <button class="nav-item" onclick="switchScreen('madrega-02')" id="nav-madrega-02">📖 מדרגה 2 — מתי הרצון נעשה כלי?</button>
-      <button class="nav-item" onclick="switchScreen('madrega-03')" id="nav-madrega-03">📖 מדרגה 3 — איך הרצון מתפתח?</button>
-      <button class="nav-item" onclick="switchScreen('madrega-04')" id="nav-madrega-04">📖 מדרגה 4 — מה מקרב ומה מרחיק?</button>
-    </nav>
-
-    <!-- Main Content Area -->
-    <main class="main-content" role="main">
-
-      <!-- Screen 1: Project Status -->
-      <section id="screen-status" class="screen-panel active">
-        <h2 class="page-title">פרויקט „הסולם” — תמונת מצב מבוקרת</h2>
-        <p class="page-subtitle">ניהול ממשל, שערים וגוף הלימוד — לסקירה פנימית בלבד</p>
-
-        <div class="card mb-3" style="border-right: 4px solid var(--accent-primary); background: var(--bg-surface);">
-          <h3 class="card-title">📌 מיקום הלימוד הנוכחי (Current Learning Position)</h3>
-          <div class="grid-2" style="margin-top: 1rem;">
-            <div>
-              <div class="stat-label">שער לימודי ראשון</div>
-              <div style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 0.5rem;">שער ראשון — מאין סוף אל הנברא</div>
-              <div class="stat-label">מדרגה 1</div>
-              <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">מדרגה 1 — לפני שהיה מי שיקבל (גרסה 0.2.1)</div>
-              <div class="stat-label">מדרגה 2</div>
-              <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">מדרגה 2 — מתי הרצון נעשה כלי? (טיוטת קורא 0.2)</div>
-              <div class="stat-label">מדרגה 3</div>
-              <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">מדרגה 3 — איך הרצון מתפתח? (טיוטת קורא 0.1.2)</div>
-              <div class="stat-label">מדרגה 4 (טיוטת קורא 0.1 לסקירה)</div>
-              <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">מדרגה 4 — מה מקרב ומה מרחיק? (שינוי צורה והשתוות הצורה)</div>
-            </div>
-            <div>
-              <div class="stat-label">תשתית משימה 01</div>
-              <div style="font-weight: 700; color: var(--success-text); margin-bottom: 0.3rem;">MISSION_01 = ACCEPTED_AS_COMPLETE</div>
-              <div class="stat-label">סטטוס תוכן מדרגה 1</div>
-              <div style="font-weight: 700; color: var(--success-text); margin-bottom: 0.3rem;">MADREGA_01_CONTENT = INGESTED_DRAFT_V0_2_1</div>
-              <div class="stat-label">סטטוס תוכן מדרגה 2</div>
-              <div style="font-weight: 700; color: var(--success-text); margin-bottom: 0.3rem;">MADREGA_02_CONTENT = INGESTED_DRAFT_V0_2</div>
-              <div class="stat-label">סטטוס תוכן מדרגה 3</div>
-              <div style="font-weight: 700; color: var(--success-text); margin-bottom: 0.3rem;">MADREGA_03_CONTENT = INGESTED_DRAFT_V0_1_2</div>
-              <div class="stat-label">סטטוס תוכן מדרגה 4</div>
-              <div style="font-weight: 700; color: var(--warning-text); margin-bottom: 0.3rem;">MADREGA_04_CONTENT = INGESTED_DRAFT_V0_1</div>
-              <div class="stat-label">הרשאת פרסום ציבורי</div>
-              <div style="font-weight: 700; color: var(--danger-text);">PUBLICATION = NOT_AUTHORIZED</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid-3 mb-3">
-          <div class="card stat-card">
-            <div class="stat-label">שערים בפיתוח</div>
-            <div class="stat-value">1</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">GATE_01 — מאין סוף אל הנברא</div>
-          </div>
-          <div class="card stat-card">
-            <div class="stat-label">מדרגות שנקלטו</div>
-            <div class="stat-value">4</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">MAD-001, MAD-002, MAD-003, MAD-004</div>
-          </div>
-          <div class="card stat-card">
-            <div class="stat-label">סך עוגני מקור מבוקרים</div>
-            <div class="stat-value">19</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">מקורות האר"י ובעל הסולם</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Screen 2: Constitution -->
-      <section id="screen-constitution" class="screen-panel">
-        <h2 class="page-title">חוקת ספר „הסולם”</h2>
-        <p class="page-subtitle">עקרונות יסוד לכתיבה, עריכה, ביקורת מקורות וממשל</p>
-        <div class="card mb-3">
-          <h3 class="card-title">1. עקרון הנאמנות לכתבי בעל הסולם</h3>
-          <p>כל מדרגה נשענת על טקסט מקור מבוקר ומאומת. אין להציג פרשנות או משל של המחברים כלשון המקור עצמה.</p>
-        </div>
-        <div class="card mb-3">
-          <h3 class="card-title">2. עקרון שפת הלב ושפת השכל</h3>
-          <p>הספר נכתב בשפה עכשווית בהירה, ישירה ומכוונת אל הלב, תוך שמירה מוחלטת על הדיוק הפנימי של חכמת הקבלה.</p>
-        </div>
-      </section>
-
-      <!-- Screen 3: Sources Registry -->
-      <section id="screen-sources" class="screen-panel">
-        <h2 class="page-title">רישום מקורות מבוקר</h2>
-        <p class="page-subtitle">מאגר עוגני המקורות המאומתים בכלל המדרגות</p>
-        <div class="card mb-3">
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr><th>מזהה עוגן</th><th>מחבר</th><th>חיבור ומיקום</th><th>סיווג</th><th>קישור ישיר</th></tr>
-              </thead>
-              <tbody>
-                  <tr>
-                    <td><code>SRC-ARI-01</code></td>
-                    <td>רבי יצחק לוריא — האר&quot;י</td>
-                    <td>עץ חיים, שער א&#x27;, ענף ב&#x27; (תע&quot;ס חלק א&#x27; פרק א&#x27; אות א&#x27;)</td>
-                    <td><span class="block-tag ari">ARI_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/HujVytxA" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-TES-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, פירוש אור פנימי לפתיחת דברי האר&quot;י / אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-02</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-03</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-TES-OR-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, אור פנימי, ביאור &quot;אור עליון&quot;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-BOUNDARY-ATZMUTO-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, פרק א&#x27;, אור פנימי אות ב&#x27;</td>
-                    <td><span class="block-tag explanation">SOURCE_SUPPORTED_EXPLANATION</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M02-PTICHA-04-A</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות ד׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M02-PTICHA-04-B</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות ד׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M02-OR-BAHIR-DESIRE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>אור הבהיר, אות א׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/B7htYIL6" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-4STAGES</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות נ׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-LONGING</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות נ׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-ABCD</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, הסתכלות פנימית, אות ל׳–ל״א</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/rhRuFdIP" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P2-ZA-TIFERET</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק ב׳, הסתכלות פנימית, אות י״ג</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/PtDrdt9v" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-HOCHMA-HASSADIM</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, הסתכלות פנימית, אות ל׳–ל״א</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/rhRuFdIP" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-FORM-DISTANCE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות ל׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M04-MAAMAR-SIYUM-HAZOHAR-FORM-DVEKUT</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>מאמר לסיום הזוהר, מאמר לסיום הזוהר</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M04-MAAMAR-SIYUM-HAZOHAR-MIDOT</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם (מביא את חז״ל)</td>
-                    <td>מאמר לסיום הזוהר, מאמר לסיום הזוהר</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M04-PTICHA-FORM-DISTANCE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות י׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- Screen 4: Transcript Index -->
-      <section id="screen-transcript" class="screen-panel">
-        <h2 class="page-title">אינדקס תמלילים ושיעורים</h2>
-        <p class="page-subtitle">מיפוי הקלטות ושיעורים מלווים</p>
-        <div class="card">
-          <p>אינדקס תמלילי שיעורים ורשומות אודיו נמצא בתהליך עיבוד ומחקר (שלב ב').</p>
-        </div>
-      </section>
-
-      <!-- Screen 5: Ladder Map -->
-      <section id="screen-ladder" class="screen-panel">
-        <h2 class="page-title">מפת הסולם — שער ראשון</h2>
-        <p class="page-subtitle">מבנה המדרגות והתפתחות התודעה</p>
-        <div class="card mb-3">
-          <h3 class="card-title">שער ראשון — מאין סוף אל הנברא</h3>
-          <ul style="list-style: none; padding: 0; line-height: 2;">
-            <li>✅ <strong>מדרגה 1:</strong> לפני שהיה מי שיקבל (עצמותו, אין סוף, מחשבת הבריאה, רצון לקבל)</li>
-            <li>✅ <strong>מדרגה 2:</strong> מתי הרצון נעשה כלי? (מילוי, הסתלקות, חיסרון והשתוקקות)</li>
-            <li>✅ <strong>מדרגה 3:</strong> איך הרצון מתפתח? (שורש וארבע בחינות דאור ישר)</li>
-            <li>✅ <strong>מדרגה 4:</strong> מה מקרב ומה מרחיק? (שינוי צורה והשתוות הצורה — טיוטת קורא 0.1)</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Screen 6: Review Queue -->
-      <section id="screen-review" class="screen-panel">
-        <h2 class="page-title">תור סקירה ובקרת איכות</h2>
-        <p class="page-subtitle">מעקב אחר פריטים הדורשים אישור עריכתי או סקירת מקורות</p>
-        <div class="card">
-          <p>כל המקורות למדרגות 1, 2, 3 ו-4 אומתו ונסקרו במלואם. מדרגה 4 נמצאת בסטטוס טיוטה מבוקרת (INGESTED_DRAFT_V0_1).</p>
-        </div>
-      </section>
-
-      <!-- Screen 7: Approval Register -->
-      <section id="screen-approvals" class="screen-panel">
-        <h2 class="page-title">פנקס אישורים מבוקר</h2>
-        <p class="page-subtitle">תיעוד אישורי שלבים, קליטת טיוטות ובקרת שינויים</p>
-        <div class="card">
-          <h3 class="card-title">✍️ רשומות אישור מאומתות</h3>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr><th>מזהה אישור</th><th>מזהה פריט</th><th>שלב מאושר</th><th>מאשר</th><th>תאריך ושעה</th><th>ראיות / הערות</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>APP-001</code></td>
-                  <td><code>MISSION_01_FOUNDATION</code></td>
-                  <td>FOUNDATION_INIT</td>
-                  <td>דדי</td>
-                  <td>2026-08-06</td>
-                  <td>אישור הרשתת משימה 01 תשתית, סכמות, אינדוקס ותצוגה פנימית</td>
-                </tr>
-                <tr>
-                  <td><code>APP-002</code></td>
-                  <td><code>MISSION_01_FINAL</code></td>
-                  <td>MISSION_01_FINAL_ACCEPTANCE</td>
-                  <td>דדי</td>
-                  <td>2026-08-06</td>
-                  <td>אישור רשמי להשלמת משימה 01 (Baseline 12 קבצים מוגנים)</td>
-                </tr>
-                <tr>
-                  <td><code>APP-003</code></td>
-                  <td><code>MISSION_02_STAGE_A</code></td>
-                  <td>STAGE A ACCEPTANCE</td>
-                  <td>דדי</td>
-                  <td>2026-08-07</td>
-                  <td>אישור רשמי להשלמת Stage A (תשתיות, סכמות, 40 כללי תיקוף)</td>
-                </tr>
-                <tr>
-                  <td><code>APP-004</code></td>
-                  <td><code>MISSION_02_STAGE_B_R4B</code></td>
-                  <td>STAGE B R4B SOURCE ADMISSION</td>
-                  <td>דדי</td>
-                  <td>2026-08-10</td>
-                  <td>אישור רשמי לקליטת מקורות R4B (Tree Hash: 26c42589...)</td>
-                </tr>
-                <tr>
-                  <td><code>APP-005</code></td>
-                  <td><code>MISSION_02_STAGE_B_BATCH_02_SOURCE_01</code></td>
-                  <td>STAGE B BATCH 02 SOURCE 01 ADMISSION</td>
-                  <td>דדי</td>
-                  <td>2026-08-10</td>
-                  <td>אישור רשמי לקליטת מקור 01 באצ' 02 (Tree Hash: f6eb8199...)</td>
-                </tr>
-                <tr>
-                  <td><code>APP-006</code></td>
-                  <td><code>MADREGA_01_CONTROLLED_DRAFT</code></td>
-                  <td>GATE 01 / MADREGA 01 DRAFT INGESTION</td>
-                  <td>דדי</td>
-                  <td>2026-08-11</td>
-                  <td>אישור עריכה לקליטת טיוטת מדרגה 1 (DRAFT / NOT_PUBLISHED)</td>
-                </tr>
-                <tr>
-                  <td><code>APP-007</code></td>
-                  <td><code>MADREGA_01_READER_V0_2_CONTROLLED_INGESTION</code></td>
-                  <td>GATE 01 / MADREGA 01 DRAFT v0.2 PROMOTION</td>
-                  <td>דדי</td>
-                  <td>2026-08-11</td>
-                  <td>אישור עריכה לקליטת טיוטת קורא v0.2 לסקירה פנימית בלבד</td>
-                </tr>
-                <tr>
-                  <td><code>APP-008</code></td>
-                  <td><code>MADREGA_02_CONTROLLED_DRAFT</code></td>
-                  <td>GATE 01 / MADREGA 02 DRAFT INGESTION</td>
-                  <td>דדי</td>
-                  <td>2026-08-16</td>
-                  <td>אישור דדי לקליטת טיוטת קורא 0.1 ו-0.2 למדרגה 2 לסקירה פנימית בלבד</td>
-                </tr>
-                <tr>
-                  <td><code>APP-009</code></td>
-                  <td><code>GATE_01_MADREGA_01_02_SHARED_READER</code></td>
-                  <td>SHARED_READER APPROVAL</td>
-                  <td>דדי</td>
-                  <td>2026-08-17</td>
-                  <td>אישור מדרגות 1–2 ל-Shared Reader</td>
-                </tr>
-                <tr>
-                  <td><code>APP-010</code></td>
-                  <td><code>MADREGA_03_READER_DRAFT_V0_1_2</code></td>
-                  <td>SHARED_READER APPROVAL</td>
-                  <td>דדי</td>
-                  <td>2026-08-20</td>
-                  <td>אישור מדרגה 3 גרסה v0.1.2 ל-Shared Reader</td>
-                </tr>
-                <tr>
-                  <td><code>APP-011</code></td>
-                  <td><code>MADREGA_04_READER_DRAFT_V0_1</code></td>
-                  <td>CONTROLLED_DRAFT_INGESTION</td>
-                  <td>דדי</td>
-                  <td>2026-08-20</td>
-                  <td>אישור דדי לקליטת טיוטת מדרגה 4 v0.1 לסקירה פנימית (NOT_PUBLISHED)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- Screen 8: Madrega 01 Controlled Draft v0.2.1 -->
-      <section id="screen-demo-madrega" class="screen-panel">
-        <div class="madrega-header-banner">
-          <div>📌 <strong>סטטוס מדרגה:</strong> INGESTED_DRAFT_V0_2_1 (מאושר ל-Shared Reader)</div>
-          <div>🔒 <strong>פרסום ציבורי:</strong> NOT_AUTHORIZED (טיוטה מבוקרת לסקירה פנימית)</div>
-        </div>
-
-        <h2 class="page-title">שער ראשון — מאין סוף אל הנברא</h2>
-        <p class="page-subtitle">מדרגה 1 — לפני שהיה מי שיקבל (טיוטת קורא 0.2.1)</p>
-
-        <div class="madrega-tab-bar">
-          <button class="madrega-tab-btn active" id="tab-btn-reader" onclick="switchMadregaTab('reader')">📖 גוף המדרגה (Lesson Reader)</button>
-          <button class="madrega-tab-btn" id="tab-btn-inspector" onclick="switchMadregaTab('inspector')">🔍 מפת מקורות וסיווג בלוקים (Source Map & Inspector)</button>
-        </div>
-
-        <!-- Tab 1: Reader View -->
-        <div id="madrega-tab-reader" class="madrega-container">
-          
-          <div class="card mb-3">
-            <p>אני רוצה לבקש ממך לדמיין דבר אחד.</p>
-            <p>לא יקום.</p>
-            <p>לא גלקסיות.</p>
-            <p>לא בני אדם.</p>
-            <p>לא מקום ולא זמן.</p>
-            <p>רק מציאות אחת פשוטה, שלמה וממלאת הכול:</p>
-            <p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin: 1rem 0;">הטבה מוחלטת.</p>
-            <p>לפני שהיה עולם,</p>
-            <p>לפני שהיו שמיים וארץ,</p>
-            <p>לפני שהייתה אפילו נקודה אחת של חושך —</p>
-            <p>היה רק רצון אחד:</p>
-            <p style="font-size: 1.1rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin: 1rem 0;">להיטיב.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #1E40AF; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag ari">דברי האר"י</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/HujVytxA" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור עץ חיים שער א' ענף ב' ברשת">מקור · עץ חיים שער א׳ ענף ב׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-ARI-01')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור עץ חיים">i</button>
-              </div>
-            </div>
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">וכך פותח האר"י הקדוש את ספרו „עץ חיים”:</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „דַּע, כִּי טֶרֶם שֶׁנֶּאֶצְלוּ הַנֶּאֱצָלִים וְנִבְרְאוּ הַנִּבְרָאִים, הָיָה אוֹר עֶלְיוֹן פָּשׁוּט מְמַלֵּא אֶת כָּל הַמְּצִיאוּת...”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <p>זה נשמע כמו תיאור פיוטי, אולי אפילו מיתולוגי.</p>
-            <p>אבל בעל הסולם מלמד אותנו לקרוא את המילים האלה אחרת לגמרי.</p>
-            <p>לא כסיפור על „פעם”, אלא כהגדרה מדויקת של נקודת המוצא.</p>
-            <p>האור העליון איננו אור פיזי שמאיר בחדר.</p>
-            <p>הוא השפע עצמו. התענוג עצמו. הרצון לתת ללא שום גבול וללא שום תנאי.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור תלמוד עשר הספירות חלק א' אור פנימי ברשת">מקור · תלמוד עשר הספירות חלק א׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-TES-01')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור תע״ס חלק א׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">ובעל הסולם מוסיף ומבאר ב„תלמוד עשר הספירות”:</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „כי חכמת הקבלה אינה מדברת מעניינים גשמיים כלל... אלא הכל מעניינים רוחניים...”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">כאן בדיוק מתחילה השאלה הראשונה</h3>
-            <p>אם הכול היה מלא באור פשוט,</p>
-            <p>אם לא היה חסר דבר,</p>
-            <p>אם השפע היה שלם ואינסופי —</p>
-            <p style="font-weight: 700; color: var(--accent-primary);">למה צריך בריאה?</p>
-            <p>מה יכול להתווסף למה שכבר מושלם?</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור פתיחה לחכמת הקבלה אות א' ברשת">מקור · פתיחה לחכמת הקבלה אות א׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-PTICHA-01')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור פתיחה אות א׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">התשובה של בעל הסולם מופיעה במשפט אחד, יסודי ועמוק:</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „מחשבת הבריאה היא להיטיב לנבראיו.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">נשתהה כאן רגע</h3>
-            <p>לא כתוב: „הבריאה נבראה כדי שהנבראים יעבדו קשה”.</p>
-            <p>לא כתוב: „הבריאה נבראה כדי להעניש או לבחון”.</p>
-            <p>התכלית היחידה, הראשונית והאחרונה של כל המציאות כולה היא:</p>
-            <p style="font-size: 1.1rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin: 0.5rem 0;">להיטיב.</p>
-            <p>אבל כאן מסתתר הפרדוקס הגדול של הבריאה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">איך אפשר לתת — אם אין מי שיקבל?</h3>
-            <p>תחשוב על זה דרך החיים שלך:</p>
-            <p>נניח שאתה רוצה לתת מתנה נפלאה לחבר. בישלת ארוחה מושלמת, השקעת שעות, הכנת את המאכלים הכי טעימים בעולם.</p>
-            <p>החבר מגיע — אבל הוא שבע לחלוטין. הוא הרגע קם מסעודה כבדה.</p>
-            <p>האם הוא יכול ליהנות מהאוכל שלך?</p>
-            <p>לא. האוכל מעולה, הרצון שלך לתת הוא אינסופי — אבל אין לו תיאבון. אין לו חיסרון.</p>
-            <p>התענוג לא תלוי רק בנותן ובאיכות המתנה.</p>
-            <p style="font-weight: 700; color: var(--accent-primary);">התענוג תלוי קודם כל במידת הרצון של המקבל.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור פתיחה לחכמת הקבלה אות א' ברשת">מקור · פתיחה לחכמת הקבלה אות א׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-PTICHA-02')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור פתיחה אות א׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">וכך מנסח זאת בעל הסולם:</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „כי הוא בערך ישר: אם הרצון לקבל מרובה — מרובה התענוג; ואם הרצון לקבל מועט — מועט התענוג.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">וכאן מגיע החידוש המרכזי של המדרגה הזאת:</h3>
-            <p>במציאות האינסופית שלפני הבריאה, היה שפע אינסופי — אבל לא היה שום רצון לקבל.</p>
-            <p>הבורא כולו השפעה, כולו נתינה. אין בו שום צורך לקבל דבר מאחר, שהרי ממי יקבל?</p>
-            <p>לכן, כדי שתוכל להתקיים הטבה אמיתית, היה צורך לברוא משהו חדש לחלוטין. משהו שלא היה קיים כלל במקור:</p>
-            <p style="font-size: 1.2rem; font-weight: 800; color: var(--accent-primary); text-align: center; margin: 1rem 0;">רצון לקבל.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור פתיחה לחכמת הקבלה אות א' ברשת">מקור · פתיחה לחכמת הקבלה אות א׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-PTICHA-03')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור פתיחה אות א׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">וזהו יסוד היסודות של כל חכמת הקבלה:</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „נמצא שכל חומר של הבריאה, מראשה ועד סופה, אינו אלא הרצון לקבל הזה בלבד...”
-            </blockquote>
-          </div>
-
-          <div class="card card-reflection mb-3">
-            <h3 class="card-title">עבודת הלב</h3>
-            <p>עצור רגע מהקריאה. קח נשימה עמוקה.</p>
-            <p>במהלך היום שלך, נסה לזהות את הרגעים שבהם אתה מרגיש חסר.</p>
-            <p>זה יכול להיות רעב פשוט, צורך במנוחה, צמא לכבוד, רצון בחום אנושי, או געגוע למשהו עמוק יותר שאינך יודע אפילו לכנותו בשם.</p>
-            <p>אל תמהר לפתור את החיסרון הזה. אל תרוץ להשתיק אותו בנייד, באוכל או בהסחת דעת.</p>
-            <p>רק הבט בו: החיסרון הזה איננו תקלה. הוא הכלי שלך. הוא עצם הנברא שבך.</p>
-          </div>
-
-          <div class="card mb-3" style="background: var(--accent-subtle); border: 1px solid var(--accent-primary); text-align: center;">
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">משפט לקחת מהמדרגה</h3>
-            <p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">החיסרון איננו ההפך מהשפע — הוא התנאי היחיד לקבלתו.</p>
-          </div>
-
-        </div>
-
-        <!-- Tab 2: Source Map & Inspector -->
-        <div id="madrega-tab-inspector" class="madrega-container" style="display: none;">
-          <div class="card mb-3">
-            <h3 class="card-title">🔍 מפת מקורות מאומתים (Source Authority Map)</h3>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr><th>מזהה עוגן</th><th>מחבר</th><th>חיבור ומיקום</th><th>סיווג</th><th>קישור ישיר לרשת</th></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>SRC-ARI-01</code></td>
-                    <td>רבי יצחק לוריא — האר&quot;י</td>
-                    <td>עץ חיים, שער א&#x27;, ענף ב&#x27; (תע&quot;ס חלק א&#x27; פרק א&#x27; אות א&#x27;)</td>
-                    <td><span class="block-tag ari">ARI_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/HujVytxA" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-TES-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, פירוש אור פנימי לפתיחת דברי האר&quot;י / אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-02</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-PTICHA-03</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות א&#x27;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-TES-OR-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, אור פנימי, ביאור &quot;אור עליון&quot;</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-BOUNDARY-ATZMUTO-01</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א&#x27;, פרק א&#x27;, אור פנימי אות ב&#x27;</td>
-                    <td><span class="block-tag explanation">SOURCE_SUPPORTED_EXPLANATION</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/events/cu/ZPAyLqOP?activeTab=transcription" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Screen 9: Madrega 02 Controlled Draft v0.2 -->
-      <section id="screen-madrega-02" class="screen-panel">
-        <div class="madrega-header-banner">
-          <div>📌 <strong>סטטוס מדרגה:</strong> INGESTED_DRAFT_V0_2 (מאושר ל-Shared Reader)</div>
-          <div>🔒 <strong>פרסום ציבורי:</strong> NOT_AUTHORIZED (טיוטה מבוקרת לסקירה פנימית)</div>
-        </div>
-
-        <h2 class="page-title">שער ראשון — מאין סוף אל הנברא</h2>
-        <p class="page-subtitle">מדרגה 2 — מתי הרצון נעשה כלי? מילוי, הסתלקות והשתוקקות (טיוטת קורא 0.2)</p>
-
-        <div class="madrega-tab-bar">
-          <button class="madrega-tab-btn active" id="tab-btn-reader-02" onclick="switchMadregaTab('reader', '02')">📖 גוף המדרגה (Lesson Reader)</button>
-          <button class="madrega-tab-btn" id="tab-btn-inspector-02" onclick="switchMadregaTab('inspector', '02')">🔍 מפת מקורות וסיווג בלוקים (Source Map & Inspector)</button>
-        </div>
-
-        <!-- Tab 1: Reader View -->
-        <div id="madrega02-tab-reader" class="madrega-container">
-          <div class="card mb-3">
-            <p>במדרגה הקודמת הגענו לנקודה יסודית מאוד.</p>
+<header class="topbar"><div><div class="brand">הסולם</div><div class="tagline">מסע לימוד בכתבי בעל הסולם, מדרגה אחר מדרגה</div></div><button id="theme" aria-label="החלפת מצב תצוגה">☾</button></header>
+<main>
+<section class="hero"><h1>שער ראשון — מאין סוף אל הנברא</h1><p>שלוש המדרגות הראשונות פתוחות כאן לקריאה משותפת.</p><nav><a href="#madrega-1">מדרגה 1</a><a href="#madrega-2">מדרגה 2</a><a href="#madrega-3">מדרגה 3</a></nav></section>
+<article id="madrega-1" class="lesson">
+    <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
+    <h2>מדרגה 1 — לפני שהיה מי שיקבל</h2>
+    
+    <div class="lesson-body"><p>אני רוצה לבקש ממך לדמיין דבר אחד.</p>
+<p>לא יקום.</p>
+<p>לא גלקסיות.</p>
+<p>לא שמש ולא ירח.</p>
+<p>לא מלאכים.</p>
+<p>לא אדם.</p>
+<p>אין חומר.</p>
+<p>אין מקום.</p>
+<p>אין זמן כפי שאנחנו מכירים אותו.</p>
+<p>ואפילו המילה <strong>„לפני”</strong> מתחילה לאבד את המשמעות הרגילה שלה — כי גם היא שייכת לעולם שבו יש זמן, התחלה וסוף.</p>
+<p>אנחנו מנסים ללכת אל נקודה שקודמת לכל מה שאנחנו מכירים כנברא.</p>
+<p>אל השורש.</p>
+<p>וכאן עולה השאלה הראשונה.</p>
+<h3>למה בכלל יש בריאה?</h3>
+<p>אם עדיין אין עולם, אין אדם ואין נברא —</p>
+<p><strong>למה בכלל צריך שיהיה משהו נוסף?</strong></p>
+<p>למה לא נשארה המציאות כפי שהיא?</p>
+<p>זו שאלה שקל מאוד לענות עליה מתוך הדמיון האנושי.</p>
+<p>אולי הבורא היה צריך מישהו שיכיר אותו.</p>
+<p>אולי היה חסר לו למי לתת.</p>
+<p>אולי הוא רצה שלא להיות לבדו.</p>
+<p>אבל כאן אנחנו צריכים להיזהר.</p>
+<p>כל המשפטים האלה לוקחים רגשות וחסרונות שאנחנו מכירים מעצמנו — ומלבישים אותם על הבורא.</p>
+<p>בעל הסולם מלמד אותנו שלא מכאן מתחילים.</p>
+<p>על עצמות הבורא איננו מתיימרים לדבר.</p>
+<p>אנחנו מתחילים במקום שבו כבר אפשר לדבר על <strong>היחס אל הנברא</strong>.</p>
+<h3>מחשבת הבריאה</h3>
+<p>מחשבת הבריאה היתה כדי להנות לנבראים.</p>
+<p>משפט אחד.</p>
+<p>אבל כמעט כל הדרך שאנחנו עומדים לעבור נמצאת כבר בתוכו.</p>
+<p>מחשבת הבריאה היא <strong>להיטיב לנבראים</strong>.</p>
+<p>לא מפני שאנחנו אומרים שהיה לבורא חיסרון שצריך למלא.</p>
+<p>אלא מפני שזה מה שנמסר לנו על מחשבת הבריאה מבחינת הנבראים:</p>
+<p><strong>יש הטבה.</strong></p>
+<p>ועכשיו קורה דבר מעניין.</p>
+<p>אם יש הטבה —</p>
+<p>צריך להיות <strong>מי שיוכל לקבל אותה</strong>.</p>
+<p>אם יש נתינה —</p>
+<p>צריך להיות מקבל.</p>
+<p>וכאן, בפעם הראשונה, אפשר להתחיל לשאול:</p>
+<p><strong>מהו נברא?</strong></p>
+<h3>מה צריך להיברא?</h3>
+<p>נניח שיש שפע שלם.</p>
+<p>כל הטוב נמצא מצד הנותן.</p>
+<p>אבל עדיין אין מי שיקבל אותו.</p>
+<p>אז מה חסר כדי שההטבה תוכל להתקבל?</p>
+<p><strong>רצון לקבל אותה.</strong></p>
+<p>וזו הנקודה שבה בעל הסולם מתחיל לחשוף בפנינו את החידוש של הבריאה.</p>
+<p>הדבר החדש אינו עולם.</p>
+<p>אינו גוף.</p>
+<p>אינו אדם.</p>
+<p>אינו מלאך.</p>
+<p>ואפילו האור עצמו אינו החידוש — מפני שהשפע בא מצד הבורא.</p>
+<p>החידוש נמצא בצד השני:</p>
+<p><strong>הרצון לקבל את השפע.</strong></p>
+<p>הוא השורש של חידוש, שפירושו יציאת יש מאין.</p>
+<p>כאן מופיעה הבחנה שתלווה אותנו לאורך הדרך.</p>
+<p>השפע אינו דבר חדש שנברא. הוא בא מצד הבורא, ולכן בעל הסולם מכנה אותו <strong>„יש מיש”</strong> — דבר הנמשך ממה שכבר קיים מצד הנותן.</p>
+<p>אבל הרצון לקבל את השפע הוא חידוש.</p>
+<p>הוא לא השפע עצמו, אלא <strong>מי שרוצה לקבל אותו</strong>.</p>
+<p>ולכן עליו מדבר בעל הסולם כעל <strong>„יש מאין”</strong> — החידוש שבבריאה.</p>
+<p>בפשטות:</p>
+<p>**השפע בא מן הבורא.<br>הרצון לקבל אותו — הוא החידוש של הנברא.**</p>
+<h3>למה דווקא רצון?</h3>
+<p>אפשר להבין את זה דרך דוגמה פשוטה.</p>
+<p>נניח שהכנת למישהו ארוחה נפלאה.</p>
+<p>השולחן מלא.</p>
+<p>האוכל מושקע.</p>
+<p>הכול מוכן.</p>
+<p>אבל האדם שיושב מולך אינו רעב בכלל.</p>
+<p>האוכל קיים.</p>
+<p>היכולת לתת קיימת.</p>
+<p>אבל מבחינת המקבל חסר דבר אחד:</p>
+<p><strong>רצון לקבל את מה שניתן לו.</strong></p>
+<p>כמובן, זו רק דוגמה גשמית ומוגבלת. בעל הסולם מדבר על מציאות רוחנית, לא על רעב ואוכל.</p>
+<p>אבל הדוגמה מאפשרת לנו לתפוס משהו בסיסי:</p>
+<p><strong>בלי חיסרון — אין כלי למילוי.</strong></p>
+<p>וכאן המילה „כלי” מקבלת לראשונה משמעות.</p>
+<h3>אור וכלי</h3>
+<p>כרגע אנחנו צריכים רק שתי מילים.</p>
+<p>לא יותר.</p>
+<p>### אור</p>
+<p>השפע הבא מצד הבורא אל הנברא.</p>
+<p>לא אור פיזי.</p>
+<p>לא משהו שהעיניים רואות.</p>
+<p>אלא שם שאנחנו מתחילים להשתמש בו עבור השפע, הטוב והמילוי המגיעים מצד הנותן.</p>
+<p>### כלי</p>
+<p><strong>הרצון לקבל את השפע.</strong></p>
+<p>זה הכול.</p>
+<p>כרגע לא צריך ספירות.</p>
+<p>לא עולמות.</p>
+<p>לא פרצופים.</p>
+<p>לא צמצום.</p>
+<p>רק שתי הבחנות:</p>
+<p><strong>אור — השפע.</strong></p>
+<p><strong>כלי — הרצון לקבל את השפע.</strong></p>
+<p>ומכאן כל החכמה תתחיל להיפתח.</p>
+<h3>דבר מדהים מתחיל להתגלות</h3>
+<p>אנחנו רגילים לחשוב שהחומר שממנו עשויה המציאות הוא חומר פיזי.</p>
+<p>אטומים. חלקיקים. אנרגיה.</p>
+<p>אבל בעל הסולם לוקח אותנו לשכבה עמוקה הרבה יותר.</p>
+<p>כל חומר של הבריאה מראשה ועד סופה.</p>
+<p>תעצור על זה לרגע.</p>
+<p>הוא לא אומר שהרצון הוא רק תכונה של האדם.</p>
+<p>הוא מצביע עליו כעל <strong>חומר הבריאה</strong>.</p>
+<p>כלומר, לפני הצורות השונות שבהן הנברא יופיע —</p>
+<p>יש משהו בסיסי:</p>
+<p><strong>רצון לקבל.</strong></p>
+<p>וזה כבר מתחיל לקרב את החכמה אלינו.</p>
+<p>כי רצון אנחנו מכירים.</p>
+<h3>רגע לפני שאנחנו חוזרים אל ראשית המציאות</h3>
+<p>אנחנו רגילים לומר:</p>
+<p><strong>זה אני.</strong></p>
+<p>השם שלי. הגוף שלי. המשפחה שלי. הזיכרונות שלי. האופי שלי. הדעות שלי. הבחירות שלי.</p>
+<p>אבל מתחת לכל אלה אפשר להתחיל להבחין בדבר בסיסי יותר.</p>
+<p><strong>רצון.</strong></p>
+<p>אני רוצה לחיות.<br>אני רוצה להבין.<br>אני רוצה שיאהבו אותי.<br>אני רוצה להצליח.<br>אני רוצה לדעת.<br>אני רוצה לנוח.<br>אני רוצה משמעות.<br>אני רוצה להתקרב לבורא.</p>
+<p>התכנים שונים מאוד.</p>
+<p>אבל מתחת לכל התכנים מתחילה להופיע אותה תנועה:</p>
+<p><strong>יש בי רצון — והוא מבקש מילוי.</strong></p>
+<p>פתאום הביטוי „רצון לקבל” כבר אינו נשמע כמו מונח מופשט מתוך ספר קבלה.</p>
+<p>אנחנו מתחילים לזהות אותו בתוכנו.</p>
+<p>ועכשיו אפשר לחזור להתחלה.</p>
+<h3>לפני שהיה מי שיקבל</h3>
+<p>עד עכשיו בנינו כמה אבני יסוד:</p>
+<p>יש מחשבת בריאה — <strong>להיטיב לנבראים</strong>.</p>
+<p>יש שפע — <strong>אור</strong>.</p>
+<p>ויש צורך במי שיוכל לקבל את השפע — <strong>כלי, רצון לקבל</strong>.</p>
+<p>ועכשיו אפשר לפגוש את נקודת הפתיחה של האר״י.</p>
+<p>טרם שנאצלו הנאצלים ונבראו הנבראים, היה אור עליון פשוט ממלא כל המציאות.</p>
+<p>בפעם הראשונה שאנחנו קוראים את המשפט הזה, חלק מהמילים עדיין זרות לנו.</p>
+<p>אבל כבר יש לנו שאלות נכונות לשאול:</p>
+<p>**מהו האור?<br>איפה המקבל?<br>ואיך מתוך מציאות שבה עדיין אין נברא — יכול להופיע מי שיוכל לומר „אני”?**</p>
+<p>אבל לפני שאנחנו ממשיכים, בעל הסולם עוצר אותנו מפני טעות גדולה.</p>
+<p>כל חכמת הקבלה מיוסדת על ענינים רוחניים, שאינם תופסים לא מקום ולא זמן.</p>
+<p>זה אחד המשפטים שכדאי לשמור קרוב כבר מן המדרגה הראשונה.</p>
+<p>כי המילה:</p>
+<p><strong>„טרם”</strong></p>
+<p>גורמת למחשבה שלנו מיד לצייר סיפור.</p>
+<p>פעם היה כך.</p>
+<p>אחר כך קרה משהו.</p>
+<p>אחר כך נוצר דבר נוסף.</p>
+<p>ואז התחיל העולם.</p>
+<p>אבל בעל הסולם אומר לנו:</p>
+<p>אל תכניסו את הרוחניות מיד לתוך הזמן והמקום שאתם מכירים מן העולם הזה.</p>
+<p>כשאנחנו אומרים „קודם” ו„אחר כך” ברוחניות, נצטרך ללמוד לחשוב יותר במונחים של:</p>
+<p><strong>שורש ותוצאה.</strong></p>
+<p><strong>סיבה ומסובב.</strong></p>
+<p>מה מוליד את מה.</p>
+<p>מה קודם למה מבחינת הסדר הפנימי של המציאות.</p>
+<p>לכן כשאנחנו קוראים „טרם שנאצלו הנאצלים...”, אנחנו לא מחפשים תאריך. אנחנו חוזרים <strong>אל השורש</strong>.</p>
+<h3>אז מה יש בשורש?</h3>
+<p>יש כאן מחשבת בריאה: <strong>להיטיב לנבראים</strong>.</p>
+<p>יש שפע מצד הנותן: <strong>אור</strong>.</p>
+<p>וכדי שתהיה קבלה של השפע צריך להופיע: <strong>רצון לקבל</strong>. זהו הכלי.</p>
+<p>וכאן אפשר לראות בפעם הראשונה את המבנה הפשוט ביותר של הבריאה:</p>
+<p><strong>נותן.</strong></p>
+<p><strong>שפע.</strong></p>
+<p><strong>מקבל.</strong></p>
+<p>אבל עכשיו מגיעה שאלה שאולי כבר התחילה להציק.</p>
+<p>אם הכול כל כך מתאים — למה הסיפור לא מסתיים כאן?</p>
+<h3>לכאורה הכול כבר מושלם</h3>
+<p>הבורא רוצה להיטיב.</p>
+<p>יש שפע.</p>
+<p>נברא רצון לקבל את השפע.</p>
+<p>לכאורה יש כאן התאמה מושלמת.</p>
+<p>יש מי שנותן. יש מי שרוצה לקבל.</p>
+<p>אז למה צריך עוד משהו? למה צריך עולמות? למה צריך צמצום? למה תיקון? למה בכלל נדרשת כל ההשתלשלות העצומה שנלמד בהמשך?</p>
+<p>התשובה מתחילה בכך שהרצון לקבל <strong>אינו מופיע מיד בצורתו השלמה</strong>.</p>
+<p>הוא מתפתח.</p>
+<p>האור פועל בו.</p>
+<p>ובתוך הרצון הולכות ונולדות הבחנות חדשות.</p>
+<p>שלב אחר שלב.</p>
+<p>עד שמופיע רצון שאפשר כבר לדבר עליו כעל נברא מובחן יותר.</p>
+<p>וזה השלב הבא שלנו.</p>
+<p>אבל אנחנו לא רוצים להתחיל אותו ברשימת שמות.</p>
+<p>אני לא רוצה שתפגוש עכשיו: כתר. חכמה. בינה. זעיר אנפין. מלכות. ותנסה לזכור אותם.</p>
+<p>אם נלמד נכון, לא יהיה צורך לשנן אותם.</p>
+<p>קודם נראה <strong>למה</strong> כל שלב חייב להופיע.</p>
+<p>מה קורה ברצון. מה משתנה בו. ולמה שלב אחד מוליד את הבא אחריו.</p>
+<p>ורק אחרי שנראה את התנועה — ניתן לה את השם:</p>
+<p><strong>שורש וארבע בחינות דאור ישר.</strong></p>
+<h3>עבודת הלב</h3>
+<p>שים רגע בצד את המחשבה שצריך „לעבוד על הרצון לקבל”. זה מוקדם מדי.</p>
+<p>לפני שמנסים לשנות משהו, אולי כדאי פשוט להכיר אותו.</p>
+<p>שים לב לכמה צורות הרצון לובש בתוכנו.</p>
+<p>רצון שיבינו אותי. רצון שיאהבו אותי. רצון להצליח. רצון לדעת. רצון לנוח. רצון למשמעות. רצון להתקרב לבורא.</p>
+<p>מבחוץ אלה נראים כמו רצונות שונים מאוד.</p>
+<p>אבל אם מקשיבים להם מעט יותר לעומק, מתחילה להופיע הבחנה פשוטה:</p>
+<p><strong>יש בי רצון, והוא מבקש מילוי.</strong></p>
+<p>אין צורך לשפוט אותו. ואין עדיין צורך לתקן אותו. רק להכיר.</p>
+<p>כי אם הרצון לקבל הוא החומר שממנו עשוי הנברא — אנחנו מתחילים כאן, אולי בפעם הראשונה, לפגוש את חומר הבריאה <strong>בתוכנו</strong>.</p>
+<p>ואז יכולה להיוולד שאלה חדשה.</p>
+<p>לא: <strong>איך אני נפטר מהרצון שלי?</strong></p>
+<p>אלא: <strong>לאיזו צורה הרצון הזה אמור להגיע?</strong></p>
+<p>זו כבר שאלה אחרת לגמרי.</p>
+<h3>משפט לקחת מהמדרגה</h3>
+<blockquote><div class="quote-label">לשון בעל הסולם</div><div><strong>הבריאה אינה מתחילה בעולם. היא מתחילה ברצון.</strong></div></blockquote>
+<p>ואולי אפשר להוסיף לידו עוד משפט אחד:</p>
+<blockquote><div class="quote-label">לשון בעל הסולם</div><div><strong>הבריאה אינה מתחילה מחיסרון בבורא — אלא ממחשבת ההטבה לנברא.</strong></div></blockquote>
+<h3>הדלת למדרגה הבאה</h3>
+<p>התחלנו בשאלה: <strong>למה בכלל יש נברא?</strong></p>
+<p>ומצאנו את מחשבת הבריאה: <strong>להיטיב לנבראים</strong>.</p>
+<p>שאלנו: אם יש הטבה — מה צריך להופיע כדי שתוכל להתקבל?</p>
+<p>והגענו אל: <strong>הרצון לקבל</strong>.</p>
+<p>שאלנו ממה עשוי הנברא — וגילינו שהחומר היסודי שלו אינו גוף ולא חומר פיזי, אלא רצון.</p>
+<p>ואז חזרנו אל דברי האר״י: „טרם שנאצלו הנאצלים ונבראו הנבראים...”</p>
+<p>ועכשיו השאלה שלנו כבר אינה: <strong>איך נברא העולם?</strong></p>
+<p>אלא שאלה עמוקה יותר:</p>
+<p><strong>איך נולד נברא?</strong></p>
+<p>איך מן האור מתפתח רצון? איך בתוך אותו רצון נולדות הבחנות? ומתי הרצון כבר יכול להיקרא באמת <strong>נברא</strong>?</p>
+<p>במדרגה הבאה נתחיל לעקוב אחרי התהליך הזה ממש מן הצעד הראשון.</p>
+<p>לא נתחיל בשמות. נראה אותו נולד. שלב אחר שלב.</p>
+<p>וכשבסופו של דבר נפגוש את המילים <strong>שורש, חכמה, בינה, זעיר אנפין ומלכות</strong> — הן לא יהיו עוד רשימת מושגים זרה. הן יהיו שמות של משהו שכבר ראינו מתרחש.</p>
+<p>---</p>
+<p>### מדרגה 2<br><strong>איך נולד הרצון — שורש וארבע בחינות דאור ישר</strong><br>שם מתחילה התנועה.</p></div>
+    </article>
+<article id="madrega-2" class="lesson">
+    <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
+    <h2>מדרגה 2 — מתי הרצון נעשה כלי?</h2>
+    <div class="subtitle">מילוי, הסתלקות והשתוקקות</div>
+    <div class="lesson-body"><p>במדרגה הקודמת הגענו לנקודה יסודית מאוד.</p>
 <p>מחשבת הבריאה היא להיטיב לנבראים.</p>
 <p>יש שפע מצד הנותן.</p>
 <p>וכדי שהשפע יוכל להתקבל, צריך להיות:</p>
@@ -662,10 +252,7 @@
 <p>לקבל משהו שניתן לי —</p>
 <p>לבין:</p>
 <p>להרגיש שאני רוצה אותו?</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">נתחיל מדבר פשוט</h3>
+<h3>נתחיל מדבר פשוט</h3>
 <p>דמיין שמישהו נותן לך לטעום פרי שמעולם לא ראית.</p>
 <p>לא ביקשת אותו.</p>
 <p>לא ידעת שהוא קיים.</p>
@@ -694,10 +281,7 @@
 <p>הפרי איננו —</p>
 <p>ופתאום אתה מרגיש כמה אתה רוצה אותו.</p>
 <p>זה כבר מצב אחר.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">מה השתנה?</h3>
+<h3>מה השתנה?</h3>
 <p>התענוג עצמו לא לימד אותנו עדיין עד כמה הרצון שלך קיים.</p>
 <p>כל עוד הפרי היה בפה —</p>
 <p>נהנית.</p>
@@ -715,24 +299,24 @@
 <p>לא רק הנאה.</p>
 <p>אלא רצון שמרגיש:</p>
 <p>אני רוצה את המילוי הזה.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור פתיחה לחכמת הקבלה אות ד׳ ברשת">מקור · פתיחה לחכמת הקבלה אות ד׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M02-PTICHA-04-A')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור פתיחה לחכמת הקבלה אות ד׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title">בעל הסולם נותן לנו כאן מפתח</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „התפשטות האור והסתלקותו הוא עושה את הכלי רצוי לתפקידו.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">למה המילוי לבדו לא מספיק?</h3>
+<h3>בעל הסולם נותן לנו כאן מפתח</h3>
+<p>בעל הסולם נותן לנו כאן מפתח</p>
+<blockquote><div class="quote-label">לשון בעל הסולם <a class="source-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener">מקור ↗</a></div><div>„התפשטות האור והסתלקותו הוא עושה את הכלי רצוי לתפקידו.”</div></blockquote>
+<p>זה משפט שצריך לקרוא לאט.</p>
+<p>אנחנו כבר מכירים שתי מילים מן המדרגה הקודמת:</p>
+<p>אור — השפע.</p>
+<p>כלי — הרצון לקבל את השפע.</p>
+<p>ועכשיו נכנסות שתי תנועות:</p>
+<p>התפשטות האור.</p>
+<p>ו־</p>
+<p>הסתלקות האור.</p>
+<p>במילים פשוטות:</p>
+<p>תחילה הכלי מתמלא.</p>
+<p>אחר כך המילוי כבר אינו נמצא בו כפי שהיה.</p>
+<p>ומשהו קורה לרצון.</p>
+<p>הוא מתחיל:</p>
+<p>להשתוקק.</p>
+<h3>למה המילוי לבדו לא מספיק?</h3>
 <p>זו נקודה עדינה.</p>
 <p>נניח שאתה נמצא כל חייך בחדר שיש בו תמיד טמפרטורה מושלמת.</p>
 <p>אף פעם לא חם מדי.</p>
@@ -754,10 +338,7 @@
 <p>אבל הוא עוזר לנו להבין את העיקרון:</p>
 <p>לפעמים דבר נמצא בתוכנו —</p>
 <p>ועדיין איננו מרגישים עד כמה אנחנו רוצים אותו.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">כלי שנמצא בתוך האור</h3>
+<h3>כלי שנמצא בתוך האור</h3>
 <p>בעל הסולם מסביר שכאשר הרצון לקבל מלא באור,</p>
 <p>הרצון עצמו עדיין כמעט אינו ניכר.</p>
 <p>האור ממלא אותו.</p>
@@ -774,10 +355,7 @@
 <p>כל עוד המילוי נמצא —</p>
 <p>החיסרון אינו בולט.</p>
 <p>ולכן הרצון עדיין אינו עומד בפנינו ככלי מובחן.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ואז האור מסתלק</h3>
+<h3>ואז האור מסתלק</h3>
 <p>כאן צריך להיזהר מן הדמיון.</p>
 <p>כשאנחנו אומרים:</p>
 <p>„האור מסתלק”</p>
@@ -788,10 +366,7 @@
 <p>כבר אינו ממלא אותו כפי שהיה.</p>
 <p>ועכשיו הרצון פוגש דבר חדש:</p>
 <p>את העובדה שהוא חסר.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">בפעם הראשונה החיסרון נעשה גלוי</h3>
+<h3>בפעם הראשונה החיסרון נעשה גלוי</h3>
 <p>תחשוב שוב על הפרי.</p>
 <p>לפני שטעמת —</p>
 <p>לא ידעת שאתה רוצה אותו.</p>
@@ -808,10 +383,7 @@
 <p>ועכשיו הוא חסר לי.</p>
 <p>וזו כבר:</p>
 <p>השתוקקות.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אולי כאן מתחיל הכלי להיות באמת מורגש</h3>
+<h3>אולי כאן מתחיל הכלי להיות באמת מורגש</h3>
 <p>זה דבר שכדאי לשמור.</p>
 <p>הרצון לקבל אינו נעשה ברור רק משום שנכנס לתוכו מילוי.</p>
 <p>דווקא כאשר הוא מכיר את המילוי —</p>
@@ -822,10 +394,7 @@
 <p>אלא:</p>
 <p>אני רוצה את התענוג.</p>
 <p>זה הבדל עצום.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">משהו שאנחנו מכירים היטב מהחיים</h3>
+<h3>משהו שאנחנו מכירים היטב מהחיים</h3>
 <p>לפעמים איננו יודעים כמה דבר יקר לנו —</p>
 <p>עד שהוא חסר.</p>
 <p>אדם שנמצא לידנו כל יום.</p>
@@ -848,10 +417,7 @@
 <p>לא מפני שהחיסרון יצר בהכרח את כל הרצון מאפס —</p>
 <p>אלא מפני שהוא:</p>
 <p>חשף אותו.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">וזה בדיוק מה שאנחנו צריכים להבין עכשיו</h3>
+<h3>וזה בדיוק מה שאנחנו צריכים להבין עכשיו</h3>
 <p>במדרגה הראשונה שאלנו:</p>
 <p>מהו החידוש של הנברא?</p>
 <p>והגענו אל:</p>
@@ -868,24 +434,22 @@
 <p>המילוי מגלה לנו שיש יכולת לקבל.</p>
 <p>החיסרון מגלה:</p>
 <p>כמה הרצון רוצה.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור פתיחה לחכמת הקבלה אות ד׳ ברשת">מקור · פתיחה לחכמת הקבלה אות ד׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M02-PTICHA-04-B')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור פתיחה לחכמת הקבלה אות ד׳">i</button>
-              </div>
-            </div>
-            <h3 class="card-title">למה בעל הסולם אומר שהנקודה הזאת עמוקה כל כך?</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „ושים כאן עיניך כי הוא עמוק מכל עמוק.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אבל יש כאן שאלה גדולה יותר</h3>
+<h3>למה בעל הסולם אומר שהנקודה הזאת עמוקה כל כך?</h3>
+<p>למה בעל הסולם אומר שהנקודה הזאת עמוקה כל כך?</p>
+<p>לאחר שהוא מסביר את היחס בין התפשטות האור, הסתלקותו והתהוות הכלי,</p>
+<p>בעל הסולם מוסיף:</p>
+<blockquote><div class="quote-label">לשון בעל הסולם <a class="source-pill" href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener">מקור ↗</a></div><div>„ושים כאן עיניך כי הוא עמוק מכל עמוק.”</div></blockquote>
+<p>זה משפט חריג.</p>
+<p>כאילו הוא אומר לנו:</p>
+<p>אל תמהרו הלאה.</p>
+<p>אל תהפכו את זה לעוד מונח.</p>
+<p>יש כאן יסוד.</p>
+<p>כי עכשיו אנחנו כבר מתחילים לראות שהנברא אינו רק „מקום” שאליו נכנס שפע.</p>
+<p>הוא צריך להגיע למצב שבו הרצון שלו נעשה:</p>
+<p>מובחן.</p>
+<p>מורגש.</p>
+<p>משתוקק.</p>
+<h3>אבל יש כאן שאלה גדולה יותר</h3>
 <p>אם הדבר הזה נכון —</p>
 <p>אז הרצון לקבל לא מופיע מיד בצורתו השלמה.</p>
 <p>הוא עובר תהליך.</p>
@@ -901,10 +465,7 @@
 <p>איך מתוך השפע עצמו מתפתח כלי שמסוגל בסופו של דבר להשתוקק אליו?</p>
 <p>אנחנו עדיין לא עונים.</p>
 <p>רק שומרים את השאלה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">יש כאן עוד דבר שכדאי להבחין בו</h3>
+<h3>יש כאן עוד דבר שכדאי להבחין בו</h3>
 <p>עד עכשיו דיברנו הרבה על הרצון לקבל.</p>
 <p>וקל מאוד לשמוע את הביטוי הזה ולהרגיש מיד:</p>
 <p>אולי הרצון לקבל הוא משהו שלילי.</p>
@@ -920,11 +481,8 @@
 <p>אנחנו אפילו עוד לא יודעים מהי צורתו השלמה.</p>
 <p>קודם צריך להבין:</p>
 <p>איך הוא נולד.</p>
-          </div>
-
-          <div class="card card-reflection mb-3">
-            <h3 class="card-title">עבודת הלב</h3>
-            <p>נסה רק להבחין.</p>
+<h3>עבודת הלב</h3>
+<p>נסה רק להבחין.</p>
 <p>לא לתקן.</p>
 <p>לא לשפוט.</p>
 <p>יש דברים בחיים שנמצאים אצלך עכשיו.</p>
@@ -945,16 +503,10 @@
 <p>כי לפעמים החיסרון אינו רק כאב.</p>
 <p>לפעמים הוא גם:</p>
 <p>גילוי של הרצון.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">משפט לקחת מהמדרגה</h3>
+<h3>משפט לקחת מהמדרגה</h3>
 <p>הרצון אינו נעשה מובחן רק מפני שקיבל.</p>
 <p>ההשתוקקות מגלה אותו כחיסרון.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">מה כבר בנינו?</h3>
+<h3>מה כבר בנינו?</h3>
 <p>במדרגה הראשונה גילינו:</p>
 <p>יש שפע — ויש רצון לקבל אותו.</p>
 <p>במדרגה הזאת גילינו דבר נוסף:</p>
@@ -969,10 +521,7 @@
 <p>לא רק אור וכלי.</p>
 <p>אלא תנועה:</p>
 <p>מילוי → חיסרון → השתוקקות.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">הדלת למדרגה הבאה</h3>
+<h3>הדלת למדרגה הבאה</h3>
 <p>ועכשיו מגיעה השאלה שבאמת פותחת את ההמשך.</p>
 <p>אם הרצון לקבל אינו מופיע מיד בצורתו השלמה —</p>
 <p>איך הוא מתפתח?</p>
@@ -993,73 +542,18 @@
 <p>שלב אחרי שלב.</p>
 <p>ורק כשהתהליך יהיה ברור —</p>
 <p>ניתן לכל שלב את שמו.</p>
-<p>מדרגה 3 — איך הרצון מתפתח?
-שורש וארבע בחינות דאור ישר</p>
+<p>מדרגה 3 — איך הרצון מתפתח?<br>שורש וארבע בחינות דאור ישר</p>
 <p>שם נתחיל לראות כיצד האור עצמו מוביל את הרצון —</p>
 <p>ממצב למצב —</p>
 <p>עד שנולד:</p>
-<p>כלי שלם יותר.</p>
-          </div>
-        </div>
-
-        <!-- Tab 2: Source Map & Inspector -->
-        <div id="madrega02-tab-inspector" class="madrega-container" style="display: none;">
-          <div class="card mb-3">
-            <h3 class="card-title">🔍 מפת מקורות מאומתים — מדרגה 2 (Source Authority Map)</h3>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr><th>מזהה עוגן</th><th>מחבר</th><th>חיבור ומיקום</th><th>סיווג</th><th>קישור ישיר לרשת</th></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>SRC-M02-PTICHA-04-A</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות ד׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M02-PTICHA-04-B</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות ד׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I?language=he" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M02-OR-BAHIR-DESIRE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>אור הבהיר, אות א׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/B7htYIL6" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Screen 10: Madrega 03 Controlled Draft v0.1.2 -->
-      <section id="screen-madrega-03" class="screen-panel">
-        <div class="madrega-header-banner">
-          <div>📌 <strong>סטטוס מדרגה:</strong> INGESTED_DRAFT_V0_1_2 (מאושר ל-Shared Reader)</div>
-          <div>🔒 <strong>פרסום ציבורי:</strong> NOT_AUTHORIZED (טיוטה מבוקרת לסקירה פנימית)</div>
-        </div>
-
-        <h2 class="page-title">שער ראשון — מאין סוף אל הנברא</h2>
-        <p class="page-subtitle">מדרגה 3 — איך הרצון מתפתח? שורש וארבע בחינות דאור ישר (טיוטת קורא 0.1.2)</p>
-
-        <div class="madrega-tab-bar">
-          <button class="madrega-tab-btn active" id="tab-btn-reader-03" onclick="switchMadregaTab('reader', '03')">📖 גוף המדרגה (Lesson Reader)</button>
-          <button class="madrega-tab-btn" id="tab-btn-inspector-03" onclick="switchMadregaTab('inspector', '03')">🔍 מפת מקורות וסיווג בלוקים (Source Map & Inspector)</button>
-        </div>
-
-        <!-- Tab 1: Reader View -->
-        <div id="madrega03-tab-reader" class="madrega-container">
-          <div class="card mb-3">
-            <p>במדרגה הקודמת הגענו לנקודה חשובה.</p>
+<p>כלי שלם יותר.</p></div>
+    </article>
+<article id="madrega-3" class="lesson">
+    <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
+    <h2>מדרגה 3 — איך הרצון מתפתח?</h2>
+    <div class="subtitle">שורש וארבע בחינות דאור ישר</div>
+    <div class="lesson-body">
+<p>במדרגה הקודמת הגענו לנקודה חשובה.</p>
 <p>ראינו שהרצון לקבל אינו נעשה ברור רק מפני שהוא מקבל.</p>
 <p>כאשר המילוי נמצא בתוכו —</p>
 <p>הרצון יכול כמעט להיעלם בתוך המילוי.</p>
@@ -1073,28 +567,10 @@
 <p>מה גורם לו להתפתח?</p>
 <p>איך מתוך השפע עצמו נולד בסופו של דבר רצון שמרגיש:</p>
 <p>אני רוצה את המילוי הזה?</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">בעל הסולם נותן לנו את מפת הדרך</h3>
+<h3>בעל הסולם נותן לנו את מפת הדרך</h3>
 <p>בעל הסולם נותן לנו את מפת הדרך:</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳ ברשת">מקור · תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M03-TES-P1-OP-4STAGES')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳">i</button>
-              </div>
-            </div>
-                        <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „ד׳ מדרגות מחויב אור העליון להתפשט עד שמגלה בנאצל את הרצון לקבל הזה על שלימותו הקבועה וקיימת.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <p>זו נקודה שכדאי לעצור עליה.</p>
+<blockquote><div class="quote-label">לשון בעל הסולם <a class="source-pill" href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener">מקור ↗</a></div><div>„ד׳ מדרגות מחויב אור העליון להתפשט עד שמגלה בנאצל את הרצון לקבל הזה על שלימותו הקבועה וקיימת.”</div></blockquote>
+<p>זו נקודה שכדאי לעצור עליה.</p>
 <p>הרצון לקבל לא מופיע בבת אחת כשהוא כבר שלם.</p>
 <p>הוא:</p>
 <p>מתפתח.</p>
@@ -1102,10 +578,7 @@
 <p>וכל מצב מוסיף בו הבחנה שלא הייתה ברורה קודם.</p>
 <p>אבל לפני שניתן לשלבים שמות —</p>
 <p>בוא נראה מה באמת קורה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">הכול מתחיל מצד הנותן</h3>
+<h3>הכול מתחיל מצד הנותן</h3>
 <p>בהתחלה עוד אין נברא שעומד ואומר:</p>
 <p>אני רוצה.</p>
 <p>יש שפע הבא מצד הנותן.</p>
@@ -1116,10 +589,7 @@
 <p>אלא:</p>
 <p>המקור שממנו מתחיל כל התהליך.</p>
 <p>אין אנו מכנים את המאציל עצמו „כתר”. השורש הוא בחינת הרצון להשפיע הכלולה באור העליון — השורש שממנו מתפתחות ארבע הבחינות.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">השלב הראשון — לקבל</h3>
+<h3>השלב הראשון — לקבל</h3>
 <p>השפע מתפשט.</p>
 <p>ובתוכו נמצא כבר הרצון שיכול לקבל אותו.</p>
 <p>יש מילוי.</p>
@@ -1139,19 +609,14 @@
 <p>וזהו השלב הראשון בהתפתחות.</p>
 <p>הרצון מקבל.</p>
 <p>אבל עדיין אינו עומד כחיסרון עצמאי ומובחן.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ואז מתעוררת תנועה חדשה</h3>
+<h3>ואז מתעוררת תנועה חדשה</h3>
 <p>בתוך הרצון המקבל מתעוררת נטייה הפוכה:</p>
 <p>לא רק לקבל —</p>
 <p>אלא:</p>
 <p>להשפיע.</p>
 <p>לא מדובר כאן בהחלטה מוסרית.</p>
 <p>אין עדיין אדם שחושב:</p>
-<blockquote style="margin: 0.75rem 0; padding: 0.5rem 1rem; border-right: 3px solid var(--accent-primary); background: var(--bg-subtle); font-style: normal;">
-  להיות מקבל זה רע, ולכן אהיה אדם טוב ואתן לאחרים.
-</blockquote>
+<blockquote><div>להיות מקבל זה רע, ולכן אהיה אדם טוב ואתן לאחרים.</div></blockquote>
 <p>אנחנו נמצאים בשורשי הרצון.</p>
 <p>בעל הסולם מתאר כאן התגברות של הרצון להשפיע.</p>
 <p>ומתוך התנועה הזאת נמשך מילוי מסוג אחר:</p>
@@ -1162,13 +627,7 @@
 <p>ועכשיו מופיעה תנועה חדשה:</p>
 <p>להיות בצורת השפעה.</p>
 <p>מדוע מתעוררת כאן תנועה של השפעה? מפני שבהתפשטות הבאה מן המאציל כלולה גם בחינת הרצון להשפיע. לכן מתעורר בנאצל רצון להידמות בצורתו למקור השפע.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid var(--accent-primary); background: var(--bg-surface);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-              <span class="block-tag explanation">משל שלנו</span>
-            </div>
-            <h3 class="card-title">אבל עכשיו נוצרת בעיה</h3>
+<h3>אבל עכשיו נוצרת בעיה</h3>
 <p>ננסה רגע לראות את זה דרך החיים.</p>
 <p>דמיין אדם שבמשך שנים קיבל הרבה.</p>
 <p>ידע.</p>
@@ -1191,10 +650,7 @@
 <p>לקבל כוחות.</p>
 <p>לקבל ידע חדש.</p>
 <p>אם יאמר:</p>
-<blockquote style="margin: 0.75rem 0; padding: 0.5rem 1rem; border-right: 3px solid var(--accent-primary); background: var(--bg-subtle); font-style: normal;">
-  מעכשיו אני רק נותן.<br>
-  אינני צריך לקבל עוד שום דבר.
-</blockquote>
+<blockquote><div>מעכשיו אני רק נותן.<br>אינני צריך לקבל עוד שום דבר.</div></blockquote>
 <p>בשלב מסוים לא יישאר לו ממה לתת.</p>
 <p>הנתינה שלו לא הייתה טעות.</p>
 <p>והוא גם לא צריך לחזור להיות רק מקבל.</p>
@@ -1204,10 +660,7 @@
 <p>אנחנו לא אומרים שכך בדיוק „חושבת” בחינה רוחנית.</p>
 <p>המשל רק עוזר לנו לראות את התנועה.</p>
 <p>אין להסיק מן המשל שבחינה ג׳ כבר פועלת בקבלה על מנת להשפיע. עדיין אין כאן מסך או חשבון עצמאי של הנברא. המשל נועד רק להראות כיצד תנועה שעיקרה השפעה יכולה לכלול גם מידה מן המילוי הראשון.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ועכשיו נחזור אל הכלי</h3>
+<h3>ועכשיו נחזור אל הכלי</h3>
 <p>התעורר בו הרצון להשפיע.</p>
 <p>אבל אור החכמה הוא גם החיות והמילוי שממנו התחיל.</p>
 <p>ולכן נוצר מצב חדש.</p>
@@ -1221,10 +674,8 @@
 <p>כאן כבר יש מצב מורכב יותר:</p>
 <p>השפעה — שבתוכה נדרשת גם מידה של חכמה.</p>
 <p>וזהו השלב הבא בהתפתחות הרצון.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ועכשיו הרצון כבר עבר דרך</h3>
+<h3>ועכשיו הרצון כבר עבר דרך</h3>
+<p>ועכשיו הרצון כבר עבר דרך</p>
 <p>שים לב למה השתנה.</p>
 <p>הרצון כבר:</p>
 <p>היה מלא.</p>
@@ -1239,27 +690,9 @@
 <p>צריך קודם להכיר אותו.</p>
 <p>ואז להרגיש שהוא חסר.</p>
 <p>בעל הסולם אומר במפורש:</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳ ברשת">מקור · תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳ ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M03-TES-P1-OP-LONGING')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור תלמוד עשר הספירות חלק א׳, פרק א׳, אור פנימי, אות נ׳">i</button>
-              </div>
-            </div>
-                        <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „הנאצל צריך להשתוקק לקבלת השפע”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <p>והוא מסביר שהשתוקקות כזאת יכולה להתגלות כאשר השפע אינו נמצא בו כפי שהיה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ואז מתעורר הרצון במלוא עוצמתו</h3>
+<blockquote><div class="quote-label">לשון בעל הסולם <a class="source-pill" href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener">מקור ↗</a></div><div>„הנאצל צריך להשתוקק לקבלת השפע.”</div></blockquote>
+<p>והוא מסביר שהשתוקקות כזאת יכולה להתגלות כאשר השפע אינו נמצא בו כפי שהיה.</p>
+<h3>ואז מתעורר הרצון במלוא עוצמתו</h3>
 <p>הרצון כבר יודע מהו אור החכמה.</p>
 <p>הוא טעם אותו.</p>
 <p>הוא חווה מצב שבו אינו ממלא אותו בשלמות.</p>
@@ -1273,10 +706,7 @@
 <p>עכשיו יש:</p>
 <p>חיסרון שיודע מה הוא רוצה.</p>
 <p>ולכן בעל הסולם אומר שרק כאן כלי הקבלה מגיעים לשלמות הנדרשת.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">עכשיו תסתכל על כל התהליך בלי שמות</h3>
+<h3>עכשיו תסתכל על כל התהליך בלי שמות</h3>
 <p>זה אולי החלק החשוב ביותר במדרגה.</p>
 <p>אל תנסה לזכור עדיין ספירות.</p>
 <p>רק תראה את התנועה:</p>
@@ -1294,10 +724,7 @@
 <p>זה התהליך.</p>
 <p>אם התהליך ברור —</p>
 <p>השמות כבר לא יהיו רשימה שרירותית.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">עכשיו אפשר לתת שמות</h3>
+<h3>עכשיו אפשר לתת שמות</h3>
 <p>למקור שממנו מתחילה ההתפשטות קוראים:</p>
 <p>שורש — כתר</p>
 <p>לשלב הראשון, שבו מתפשט אור החכמה והרצון מקבל אותו:</p>
@@ -1309,10 +736,7 @@
 <p>בתע״ס חלק ב׳ היא נקראת גם תפארת, משום שהיא כוללת שש ספירות.</p>
 <p>ולהתגברות הרצון לקבל עד שהוא נעשה כלי שלם יותר מתוך השתוקקות:</p>
 <p>בחינה ד׳ — מלכות</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אז למה קוראים לזה „אור ישר”?</h3>
+<h3>אז למה קוראים לזה „אור ישר”?</h3>
 <p>כרגע אנחנו מסתכלים על התנועה בכיוון אחד:</p>
 <p>מן המאציל אל הנאצל.</p>
 <p>השפע פועל —</p>
@@ -1327,10 +751,7 @@
 <p>כל אלה שייכים להמשך.</p>
 <p>כרגע אנחנו רוצים לראות רק דבר אחד:</p>
 <p>איך האור מוביל את הרצון ממצב למצב עד שנוצר כלי מובחן יותר.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">מקום שקל לטעות בו</h3>
+<h3>מקום שקל לטעות בו</h3>
 <p>אפשר לחשוב:</p>
 <p>בחינה א׳ רוצה לקבל.</p>
 <p>בחינה ב׳ „מתחרטת” ורוצה לתת.</p>
@@ -1343,11 +764,8 @@
 <p>כל מצב מגלה אפשרות חדשה שלא הייתה מובחנת במצב שקדם לו.</p>
 <p>המצב הבא אינו מוחק את הקודם.</p>
 <p>הוא נולד ממנו.</p>
-          </div>
-
-          <div class="card card-reflection mb-3">
-            <h3 class="card-title">עבודת הלב</h3>
-            <p>גם בחיים שלנו רצון לא תמיד מופיע בבת אחת.</p>
+<h3>עבודת הלב</h3>
+<p>גם בחיים שלנו רצון לא תמיד מופיע בבת אחת.</p>
 <p>לפעמים אנחנו אומרים:</p>
 <p>אני רוצה את הדבר הזה.</p>
 <p>אבל אם נסתכל פנימה —</p>
@@ -1362,17 +780,11 @@
 <p>אין צורך לקחת עכשיו כל רצון בחיים ולחפש בו ארבע בחינות.</p>
 <p>המטרה היא רק להבחין:</p>
 <p>גם הרצון שלנו יכול להיות תהליך — ולא רק נקודה.</p>
-          </div>
-
-          <div class="card mb-3" style="background: var(--accent-subtle); border: 1px solid var(--accent-primary); text-align: center;">
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">משפט לקחת מהמדרגה</h3>
-            <p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">האור אינו רק ממלא את הרצון — הוא גם מפתח אותו.</p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">ומתוך ההתפתחות הזאת:</p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">הרצון עובר מקבלה — עד להשתוקקות שמגלה אותו ככלי מובחן יותר.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">מה כבר בנינו?</h3>
+<h3>משפט לקחת מהמדרגה</h3>
+<p>האור אינו רק ממלא את הרצון — הוא גם מפתח אותו.</p>
+<p>ומתוך ההתפתחות הזאת:</p>
+<p>הרצון עובר מקבלה — עד להשתוקקות שמגלה אותו ככלי מובחן יותר.</p>
+<h3>מה כבר בנינו?</h3>
 <p>במדרגה 1 שאלנו:</p>
 <p>מהו החידוש של הנברא?</p>
 <p>וגילינו:</p>
@@ -1389,10 +801,7 @@
 <p>השמות האלה כבר אינם רק רשימת מושגים.</p>
 <p>הם:</p>
 <p>מפה של התפתחות הרצון.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid var(--accent-primary); background: var(--bg-surface);">
-            <h3 class="card-title">הדלת למדרגה הבאה</h3>
+<h3>הדלת למדרגה הבאה</h3>
 <p>ועכשיו קרה משהו חשוב.</p>
 <p>הגענו אל:</p>
 <p>מלכות.</p>
@@ -1414,380 +823,9 @@
 <p>שם נתחיל להבין שהמרחק הרוחני אינו נמדד במקום.</p>
 <p>הוא נמדד:</p>
 <p>בצורה.</p>
-          </div>
-        </div>
-
-        <!-- Tab 2: Source Map & Inspector -->
-        <div id="madrega03-tab-inspector" class="madrega-container" style="display: none;">
-          <div class="card mb-3">
-            <h3 class="card-title">🔍 מפת מקורות מאומתים — מדרגה 3 (Source Authority Map)</h3>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr><th>מזהה עוגן</th><th>מחבר</th><th>חיבור ומיקום</th><th>סיווג</th><th>קישור ישיר לרשת</th></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-4STAGES</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות נ׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-LONGING</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות נ׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-ABCD</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, הסתכלות פנימית, אות ל׳–ל״א</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/rhRuFdIP" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P2-ZA-TIFERET</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק ב׳, הסתכלות פנימית, אות י״ג</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/PtDrdt9v" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-HOCHMA-HASSADIM</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, הסתכלות פנימית, אות ל׳–ל״א</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/rhRuFdIP" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M03-TES-P1-OP-FORM-DISTANCE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>תלמוד עשר הספירות, חלק א׳, פרק א׳, אור פנימי, אות ל׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/7scSATcZ" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Screen 11: Madrega 04 Controlled Draft v0.1 -->
-      <section id="screen-madrega-04" class="screen-panel">
-        <div class="madrega-header-banner">
-          <div>📌 <strong>סטטוס מדרגה:</strong> INGESTED_DRAFT_V0_1 (טיוטת קורא 0.1 — ממתין לאישור דדי)</div>
-          <div>🔒 <strong>פרסום ציבורי:</strong> NOT_AUTHORIZED (טיוטה מבוקרת לסקירה פנימית)</div>
-        </div>
-
-        <h2 class="page-title">שער ראשון — מאין סוף אל הנברא</h2>
-        <p class="page-subtitle">מדרגה 4 — מה מקרב ומה מרחיק? שינוי צורה והשתוות הצורה (טיוטת קורא 0.1)</p>
-
-        <div class="madrega-tab-bar">
-          <button class="madrega-tab-btn active" id="tab-btn-reader-04" onclick="switchMadregaTab('reader', '04')">📖 גוף המדרגה (Lesson Reader)</button>
-          <button class="madrega-tab-btn" id="tab-btn-inspector-04" onclick="switchMadregaTab('inspector', '04')">🔍 מפת מקורות וסיווג בלוקים (Source Map & Inspector)</button>
-        </div>
-
-        <!-- Tab 1: Reader View -->
-        <div id="madrega04-tab-reader" class="madrega-container">
-          <div class="card mb-3">
-            <p>במדרגה הקודמת ראינו כיצד האור מפתח את הרצון.</p>
-<p>הרצון אינו מופיע מיד כשהוא שלם. הוא עובר דרך קבלה, התעוררות להשפעה, חיסרון והשתוקקות — עד שהוא נעשה כלי מובחן שיודע מה הוא רוצה.</p>
-<p>אבל עכשיו מתעוררת שאלה עמוקה יותר.</p>
-<p>כל התהליך הזה התחיל מן האור.</p>
-<p>הרצון נולד מתוך פעולת האור.</p>
-<p>המילוי שלו מגיע מן האור.</p>
-<p>אם כך, מה בעצם מפריד בין הנברא לבין הבורא?</p>
-<p>הרי עדיין לא דיברנו על מרחק.</p>
-<p>לא אמרנו שהנברא עבר למקום אחר.</p>
-<p>אז כיצד הופיעה כאן מציאות נפרדת?</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אנחנו רגילים למדוד מרחק במקום</h3>
-<p>בעולם שלנו, שני דברים קרובים כאשר הם נמצאים באותו מקום.</p>
-<p>ושני דברים רחוקים כאשר מפרידים ביניהם מטרים, קילומטרים או יבשות.</p>
-<p>אבל ברוחניות אין מרחק כזה.</p>
-<p>אי אפשר לומר שהבורא נמצא בנקודה אחת והנברא בנקודה אחרת.</p>
-<p>אין שם צפון ודרום.</p>
-<p>אין למעלה ולמטה במובן הגשמי.</p>
-<p>אין קילומטרים שמפרידים בין נשמה לבין הבורא.</p>
-<p>אם כך, מהי קרבה רוחנית?</p>
-<p>ומהו ריחוק רוחני?</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור מאמר לסיום הזוהר מאמר לסיום הזוהר ברשת">מקור · מאמר לסיום הזוהר מאמר לסיום הזוהר ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M04-MAAMAR-SIYUM-HAZOHAR-FORM-DVEKUT')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור מאמר לסיום הזוהר מאמר לסיום הזוהר">i</button>
-              </div>
-            </div>
-            <h3 class="card-title">לשון בעל הסולם</h3>
-            <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „השואת הצורה, שיש בין שני רוחניים, מובנת לנו כדביקות. ושינוי הצורה, בין שני רוחניים, מובן לנו כפירוד.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <p>כך מסביר בעל הסולם ב״מאמר לסיום הזוהר״.</p>
-<p>זהו אחד היסודות החשובים ביותר בחכמת הקבלה:</p>
-<p><strong>ברוחניות, המרחק אינו נמדד לפי המקום — אלא לפי הצורה.</strong></p>
-<p>ככל ששתי מציאויות דומות יותר בצורתן, הן נחשבות קרובות יותר.</p>
-<p>ככל שהן שונות יותר בצורתן, הן נחשבות רחוקות יותר.</p>
-<p>ואם צורתן הפוכה לגמרי — הן נחשבות רחוקות זו מזו מן הקצה אל הקצה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אבל מה פירוש המילה „צורה”?</h3>
-<p>אנחנו לא מדברים על צורת הגוף.</p>
-<p>לא על מראה חיצוני.</p>
-<p>לא על האופן שבו אדם מתלבש, מדבר או מחזיק את עצמו.</p>
-<p>כשאנחנו מדברים על צורת הרצון, אנחנו שואלים:</p>
-<p>לאן הרצון פונה?</p>
-<p>מהי התנועה שלו?</p>
-<p>האם הוא מבקש למשוך הכול אל עצמו?</p>
-<p>או שמתעוררת בו תנועה של השפעה והטבה לאחר?</p>
-<p>במדרגה 3 ראינו שהצורה השורשית של האור היא:</p>
-<p>להשפיע.</p>
-<p>ומצד הנברא התפתח רצון:</p>
-<p>לקבל.</p>
-<p>אלה שתי תנועות שונות.</p>
-<p>האור פונה מן המקור אל המקבל.</p>
-<p>הרצון לקבל מושך את המילוי אל תוכו.</p>
-<p>מכאן נולד שינוי הצורה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">שינוי הצורה יוצר את ההבדלה</h3>
-<p>חשוב מאוד להבין:</p>
-<p>הרצון לקבל אינו טעות.</p>
-<p>הוא אינו חטא.</p>
-<p>והוא גם אינו משהו שהופיע בניגוד למחשבת הבריאה.</p>
-<p>להפך.</p>
-<p>בלי רצון לקבל לא היה מי שיקבל את השפע.</p>
-<p>לא היה נברא.</p>
-<p>לא היה כלי.</p>
-<p>לא היה מי שיוכל להרגיש את הטוב שהבורא מבקש להעניק.</p>
-<p>אבל דווקא הרצון לקבל הוא גם מה שמבחין את הנברא מן הבורא.</p>
-<p>מצד הבורא נמצאת תנועת ההשפעה.</p>
-<p>מצד הנברא נמצאת תנועת הקבלה.</p>
-<p>בעל הסולם מסביר ב״פתיחה לחכמת הקבלה״ שהרצון לקבל הוא דבר מחויב בנברא, מפני שהוא הכלי לקבלת מטרת הבריאה; ובאותה שעה, הפכיות הצורה בינו לבין המאציל יוצרת את ההפרדה.</p>
-<p>כלומר:</p>
-<p>אותו רצון שמאפשר לנברא להתקיים — הוא גם שיוצר את הריחוק הראשוני.</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid var(--accent-primary); background: var(--bg-surface);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-              <span class="block-tag explanation">משל שלנו</span>
-            </div>
-            <h3 class="card-title">משל שלנו</h3>
-<p>תאר לך שני אנשים היושבים זה לצד זה באותו חדר.</p>
-<p>מבחינה גשמית הם קרובים מאוד.</p>
-<p>אבל האחד חושב רק כיצד להשתמש בשני לצורכי עצמו.</p>
-<p>והשני מבקש בטובתו באמת.</p>
-<p>הגופים שלהם קרובים.</p>
-<p>אבל הרצונות שלהם פונים לכיוונים שונים.</p>
-<p>במובן הפנימי, הם רחוקים.</p>
-<p>ומצד אחר, ייתכן ששני אנשים נמצאים בארצות שונות.</p>
-<p>הם אינם רואים זה את זה.</p>
-<p>אבל שניהם אוהבים את אותו הדבר, דואגים לאותה מטרה ומבקשים להיטיב זה עם זה.</p>
-<p>מבחינת המקום הם רחוקים.</p>
-<p>אבל מבחינת הכיוון הפנימי שלהם — הם קרובים.</p>
-<p>זהו רק משל מן החיים.</p>
-<p>אין הכוונה שכל הסכמה בין בני אדם היא כבר השתוות צורה רוחנית עם הבורא. המשל רק עוזר לנו להשתחרר מן הרעיון שקרבה מוכרחה להיות קרבה של מקום.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">אז מהי השתוות הצורה?</h3>
-<p>אם שינוי הצורה יוצר פירוד, הכיוון ההפוך הוא:</p>
-<p>השתוות הצורה.</p>
-<p>השתוות הצורה אינה אומרת שהנברא נעשה הבורא.</p>
-<p>הנברא אינו נעלם.</p>
-<p>הוא אינו מאבד את זהותו.</p>
-<p>והרצון לקבל שלו אינו חדל להתקיים.</p>
-<p>השתוות הצורה פירושה שהנברא מתחיל לרכוש צורה הדומה לצורת ההשפעה של הבורא.</p>
-<p>על כך נאמר:</p>
-          </div>
-
-          <div class="card mb-3" style="border-right: 4px solid #92400E; background: var(--bg-subtle);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
-              <span class="block-tag baal-hasulam">לשון בעל הסולם</span>
-              <div style="display:inline-flex; align-items:center; gap:0.3rem;">
-                <a class="source-badge-pill" href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer" aria-label="פתח מקור מאמר לסיום הזוהר מאמר לסיום הזוהר ברשת">מקור · מאמר לסיום הזוהר מאמר לסיום הזוהר ↗</a>
-                <button class="source-info-btn" onclick="openSourceCard('SRC-M04-MAAMAR-SIYUM-HAZOHAR-MIDOT')" title="פרטי מקור מבוקר" aria-label="הצג כרטיס מקור מאמר לסיום הזוהר מאמר לסיום הזוהר">i</button>
-              </div>
-            </div>
-                        <blockquote style="font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0;">
-              „מה הוא רחום, אף אתה רחום. מה הוא חנון, אף אתה חנון.”
-            </blockquote>
-          </div>
-
-          <div class="card mb-3">
-            <p>לא להיות הבורא — אלא להידמות למידותיו.</p>
-<p>כפי שהבורא פועל מתוך השפעה והטבה, כך גם בנברא יכולה להתפתח תנועה של השפעה והטבה.</p>
-<p>ובמידה שהצורה נעשית דומה — נוצרת קרבה.</p>
-<p>הקרבה השלמה הזאת נקראת:</p>
-<p><strong>דבקות.</strong></p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">דבקות אינה התמזגות גשמית</h3>
-<p>המילה „דבקות” עלולה לעורר תמונה של שני דברים שנדבקים זה לזה והופכים לדבר אחד.</p>
-<p>אבל זו שוב תמונה גשמית.</p>
-<p>דבקות רוחנית אינה מחיקה של הנברא בתוך הבורא.</p>
-<p>היא גם אינה רגש חולף, התלהבות או חוויה מיסטית.</p>
-<p>דבקות היא התאמה הולכת וגדלה בין צורת הרצון של הנברא לבין צורת ההשפעה של הבורא.</p>
-<p>בעל הסולם מנסח זאת בפשטות:</p>
-<p>שינוי הצורה מפריד.</p>
-<p>השתוות הצורה מדביקה.</p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">מקום שקל לטעות בו</h3>
-<p>אפשר לחשוב:</p>
-<p>אם הרצון לקבל מפריד אותי מן הבורא, עליי להפסיק לרצות.</p>
-<p>לא ליהנות.</p>
-<p>לא לקבל דבר.</p>
-<p>לבטל את עצמי.</p>
-<p>אבל זו אינה מטרת הבריאה.</p>
-<p>אם הרצון לקבל ייעלם — גם הנברא ייעלם.</p>
-<p>לא יישאר כלי שיוכל לקבל את הטוב.</p>
-<p>לכן חכמת הקבלה אינה מלמדת אותנו להרוס את הרצון.</p>
-<p>היא מלמדת כיצד הרצון לקבל יכול לעבור תיקון של צורה.</p>
-<p>כיצד נברא שנברא כמקבל יוכל בכל זאת להידמות לנותן — בלי לחדול להיות נברא.</p>
-<p>עדיין לא נלמד כאן כיצד הדבר מתרחש.</p>
-<p>עוד לא נכנסנו למסך, לאור חוזר או לקבלה על מנת להשפיע.</p>
-<p>כרגע אנחנו מניחים רק את היסוד:</p>
-<p><strong>העבודה אינה למחוק את הרצון — אלא לשנות את צורת השימוש בו.</strong></p>
-          </div>
-
-          <div class="card mb-3">
-            <h3 class="card-title">ועכשיו אפשר להבין מהי מדרגה רוחנית</h3>
-<p>עד עכשיו המילה „מדרגה” אולי נשמעה כמו שלב בסולם העולה למעלה.</p>
-<p>אבל אין ברוחניות סולם גשמי.</p>
-<p>אי אפשר להתקרב לבורא באמצעות תנועה במרחב.</p>
-<p>עלייה במדרגה פירושה:</p>
-<p>שינוי של הצורה.</p>
-<p>כאשר צורת הרצון נעשית קרובה יותר לצורת ההשפעה — האדם נחשב קרוב יותר.</p>
-<p>כאשר הרצון פועל בצורה הפוכה יותר — הוא נחשב רחוק יותר.</p>
-<p>לכן הדרך הרוחנית אינה מסע למקום אחר.</p>
-<p>היא מסע בתוך צורת הרצון.</p>
-          </div>
-
-          <div class="card card-reflection mb-3">
-            <h3 class="card-title">עבודת הלב</h3>
-            <p>לפעמים אדם יכול להיות קרוב אלינו מאוד מבחינה חיצונית — ובכל זאת נרגיש שיש בינינו מרחק.</p>
-<p>ולפעמים מתגלה רגע שבו אנחנו מבקשים באמת בטובתו של מישהו אחר.</p>
-<p>לא מפני שאנחנו מצפים לקבל ממנו דבר.</p>
-<p>אלא מפני שטובתו נעשית חשובה לנו.</p>
-<p>אין צורך לקבוע שהרגע הזה הוא כבר השגה רוחנית.</p>
-<p>ואין צורך לבדוק את עצמנו או להפוך זאת לשיעורי בית.</p>
-<p>אפשר רק להרגיש את ההבדל בין שתי התנועות:</p>
-<p>מה אני יכול לקבל מן האחר?</p>
-<p>ומה אני יכול להעניק לו?</p>
-<p>בתוך ההבדל הזה אנחנו מתחילים לקבל רמז למה שבעל הסולם מכנה:</p>
-<p>שינוי צורה והשתוות הצורה.</p>
-          </div>
-
-          <div class="card mb-3" style="background: var(--accent-subtle); border: 1px solid var(--accent-primary); text-align: center;">
-            <h3 class="card-title" style="margin-bottom: 0.5rem;">משפט לקחת מהמדרגה</h3>
-            <p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;"><strong>ברוחניות אין מרחק של מקום.</strong></p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;"><strong>שינוי הצורה מרחיק — והשתוות הצורה מקרבת.</strong></p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">ומכאן נשארת לנו שאלה גדולה:</p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">אם טבעו של הנברא הוא לקבל, וטבעו של הבורא הוא להשפיע — כיצד יכול הרצון לקבל להגיע להשתוות הצורה, מבלי להפסיק להיות רצון לקבל?</p>
-<p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin: 0.5rem 0;">זו כבר הדלת למדרגה הבאה.</p>
-          </div>
-        </div>
-
-        <!-- Tab 2: Source Map & Inspector -->
-        <div id="madrega04-tab-inspector" class="madrega-container" style="display: none;">
-          <div class="card mb-3">
-            <h3 class="card-title">🔍 מפת מקורות מאומתים — מדרגה 4 (Source Authority Map)</h3>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr><th>מזהה עוגן</th><th>מחבר</th><th>חיבור ומיקום</th><th>סיווג</th><th>קישור ישיר לרשת</th></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>SRC-M04-MAAMAR-SIYUM-HAZOHAR-FORM-DVEKUT</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>מאמר לסיום הזוהר, מאמר לסיום הזוהר</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M04-MAAMAR-SIYUM-HAZOHAR-MIDOT</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם (מביא את חז״ל)</td>
-                    <td>מאמר לסיום הזוהר, מאמר לסיום הזוהר</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/VyDjtKiN" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                  <tr>
-                    <td><code>SRC-M04-PTICHA-FORM-DISTANCE</code></td>
-                    <td>רבי יהודה לייב הלוי אשלג — בעל הסולם</td>
-                    <td>פתיחה לחכמת הקבלה, אות י׳</td>
-                    <td><span class="block-tag baal-hasulam">BAAL_HASULAM_SOURCE</span></td>
-                    <td><a href="https://kabbalahmedia.info/he/sources/kB3eD83I" target="_blank" rel="noopener noreferrer">עותק קריאה בקבלה מדיה ↗</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Source Card Modal -->
-      <div id="sourceCardModal" class="source-card-modal-backdrop" onclick="if(event.target===this) closeSourceCard()">
-        <div class="source-card-dialog">
-          <div class="source-card-header">
-            <h3 id="scModalTitle" style="margin: 0;">כרטיס מקור מבוקר</h3>
-            <button class="source-card-close-btn" onclick="closeSourceCard()" aria-label="סגור">✕</button>
-          </div>
-          <div class="source-card-body">
-            <div class="source-card-meta-row">
-              <span class="source-card-meta-label">מחבר המקור: </span>
-              <span id="scModalAuthor"></span>
-            </div>
-            <div class="source-card-meta-row">
-              <span class="source-card-meta-label">חיבור ומיקום: </span>
-              <span id="scModalLocation"></span>
-            </div>
-            <div class="source-card-meta-row">
-              <span class="source-card-meta-label">סמכות מקור: </span>
-              <span id="scModalClassification"></span>
-            </div>
-            <div class="source-card-meta-row">
-              <span class="source-card-meta-label">מקור ברשת: </span>
-              <span id="scModalCopyRole" style="font-size:0.88rem; font-weight:600; color:var(--accent-primary);">עותק קריאה ציבורי</span>
-            </div>
-            <div class="source-card-excerpt-box" id="scModalExcerpt"></div>
-            <div class="source-card-meta-row">
-              <span class="source-card-meta-label">ייחוס נדרש: </span>
-              <span id="scModalAttribution" style="font-size:0.88rem; color:var(--text-secondary);"></span>
-            </div>
-            <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
-              <span id="scModalStatus" style="font-size:0.8rem; color:var(--text-muted);">טקסט מקור מאומת</span>
-              <a class="btn-theme" id="scModalActionButton" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem; text-decoration:none;">פתח את המקור ברשת ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <footer class="app-footer" role="contentinfo">
-    פרויקט „הסולם” — תצוגה פנימית לסקירה | לא לפרסום ציבורי
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+    </div>
+</article>
+</main>
+<footer>הסולם · גרסת קריאה משותפת</footer>
+<script src="app.js"></script>
+</body></html>
