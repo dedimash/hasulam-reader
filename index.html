@@ -10,7 +10,10 @@
 <body>
 <header class="topbar"><div><div class="brand">הסולם</div><div class="tagline">מסע לימוד בכתבי בעל הסולם, מדרגה אחר מדרגה</div></div><button id="theme" aria-label="החלפת מצב תצוגה">☾</button></header>
 <main>
-<section class="hero"><h1>שער ראשון — מאין סוף אל הנברא</h1><p>חמש המדרגות הראשונות פתוחות כאן לקריאה משותפת.</p><nav><a href="#madrega-1">מדרגה 1</a><a href="#madrega-2">מדרגה 2</a><a href="#madrega-3">מדרגה 3</a><a href="#madrega-4">מדרגה 4</a><a href="#madrega-5">מדרגה 5</a></nav></section>
+<section class="hero"><h1>שער ראשון — מאין סוף אל הנברא</h1><p>בחרו מדרגה כדי לפתוח אותה כאן, בתוך רצף הקריאה.</p><nav aria-label="תוכן הספר"><a href="#madrega-1">מדרגה 1</a><a href="#madrega-2">מדרגה 2</a><a href="#madrega-3">מדרגה 3</a><a href="#madrega-4">מדרגה 4</a><a href="#madrega-5">מדרגה 5</a></nav></section>
+<section class="lesson-accordion" aria-label="מדרגות הלימוד">
+<details class="lesson-entry" data-madrega="madrega-1">
+<summary><span class="summary-number">מדרגה 1</span><span class="summary-title">לפני שהיה מי שיקבל</span><span class="summary-action" aria-hidden="true">פתיחה</span></summary>
 <article id="madrega-1" class="lesson">
     <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
     <h2>מדרגה 1 — לפני שהיה מי שיקבל</h2>
@@ -232,6 +235,9 @@
 <p>---</p>
 <p>### מדרגה 2<br><strong>איך נולד הרצון — שורש וארבע בחינות דאור ישר</strong><br>שם מתחילה התנועה.</p></div>
     </article>
+</details>
+<details class="lesson-entry" data-madrega="madrega-2">
+<summary><span class="summary-number">מדרגה 2</span><span class="summary-copy"><span class="summary-title">מתי הרצון נעשה כלי?</span><span class="summary-subtitle">מילוי, הסתלקות והשתוקקות</span></span><span class="summary-action" aria-hidden="true">פתיחה</span></summary>
 <article id="madrega-2" class="lesson">
     <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
     <h2>מדרגה 2 — מתי הרצון נעשה כלי?</h2>
@@ -548,6 +554,9 @@
 <p>עד שנולד:</p>
 <p>כלי שלם יותר.</p></div>
     </article>
+</details>
+<details class="lesson-entry" data-madrega="madrega-3">
+<summary><span class="summary-number">מדרגה 3</span><span class="summary-copy"><span class="summary-title">איך הרצון מתפתח?</span><span class="summary-subtitle">שורש וארבע בחינות דאור ישר</span></span><span class="summary-action" aria-hidden="true">פתיחה</span></summary>
 <article id="madrega-3" class="lesson">
     <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
     <h2>מדרגה 3 — איך הרצון מתפתח?</h2>
@@ -825,6 +834,9 @@
 <p>בצורה.</p>
     </div>
 </article>
+</details>
+<details class="lesson-entry" data-madrega="madrega-4">
+<summary><span class="summary-number">מדרגה 4</span><span class="summary-copy"><span class="summary-title">מה מקרב ומה מרחיק?</span><span class="summary-subtitle">שינוי צורה והשתוות הצורה</span></span><span class="summary-action" aria-hidden="true">פתיחה</span></summary>
 <article id="madrega-4" class="lesson">
     <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
     <h2>מדרגה 4 — מה מקרב ומה מרחיק?</h2>
@@ -989,6 +1001,9 @@
 <p>זו כבר הדלת למדרגה הבאה.</p>
     </div>
 </article>
+</details>
+<details class="lesson-entry" data-madrega="madrega-5">
+<summary><span class="summary-number">מדרגה 5</span><span class="summary-copy"><span class="summary-title">מהו הצמצום הראשון?</span><span class="summary-subtitle">כשהרצון מגביל את הקבלה כדי לא להישאר בפירוד</span></span><span class="summary-action" aria-hidden="true">פתיחה</span></summary>
 <article id="madrega-5" class="lesson">
     <div class="eyebrow">שער ראשון — מאין סוף אל הנברא</div>
     <h2>מדרגה 5 — מהו הצמצום הראשון?</h2>
@@ -1236,6 +1251,8 @@
 <p>זו תהיה הדלת למדרגה 6.</p>
     </div>
 </article>
+</details>
+</section>
 </main>
 <footer>הסולם · גרסת קריאה משותפת</footer>
 <script src="app.js"></script>

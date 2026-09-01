@@ -108,5 +108,114 @@ function addMadregaOneSourcePills() {
   });
 }
 
+function setupLessonAccordion() {
+  const entries = [...document.querySelectorAll('.lesson-entry')];
+  const navLinks = [...document.querySelectorAll('.hero nav a[href^="#madrega-"]')];
+  const openKey = 'hasulam-reader-open-madrega';
+  const scrollKey = 'hasulam-reader-scroll-position';
+
+  if (!entries.length) return;
+
+  const entryById = (id) =>
+    entries.find((entry) => entry.dataset.madrega === id);
+
+  const safeRead = (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  };
+
+  const safeWrite = (key, value) => {
+    try {
+      if (value === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, value);
+    } catch {
+      // The reader remains fully usable when storage is unavailable.
+    }
+  };
+
+  const closeOtherEntries = (activeEntry) => {
+    entries.forEach((entry) => {
+      if (entry !== activeEntry && entry.open) entry.open = false;
+    });
+  };
+
+  const openEntry = (entry, { scroll = false, updateUrl = false } = {}) => {
+    if (!entry) return;
+    closeOtherEntries(entry);
+    entry.open = true;
+    safeWrite(openKey, entry.dataset.madrega);
+
+    if (updateUrl) {
+      history.replaceState(null, '', `#${entry.dataset.madrega}`);
+    }
+
+    if (scroll) {
+      requestAnimationFrame(() => {
+        entry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  };
+
+  entries.forEach((entry) => {
+    entry.addEventListener('toggle', () => {
+      if (entry.open) {
+        closeOtherEntries(entry);
+        safeWrite(openKey, entry.dataset.madrega);
+        history.replaceState(null, '', `#${entry.dataset.madrega}`);
+      } else if (!entries.some((candidate) => candidate.open)) {
+        safeWrite(openKey, null);
+        history.replaceState(null, '', `${location.pathname}${location.search}`);
+      }
+    });
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const id = link.getAttribute('href').slice(1);
+      const entry = entryById(id);
+      if (!entry) return;
+      event.preventDefault();
+      openEntry(entry, { scroll: true, updateUrl: true });
+    });
+  });
+
+  addEventListener('hashchange', () => {
+    const entry = entryById(location.hash.slice(1));
+    if (entry) openEntry(entry, { scroll: true });
+  });
+
+  const hashEntry = entryById(location.hash.slice(1));
+  const savedEntry = entryById(safeRead(openKey));
+  const initialEntry = hashEntry || savedEntry || entries[0];
+  openEntry(initialEntry);
+
+  if (hashEntry) {
+    requestAnimationFrame(() => hashEntry.scrollIntoView({ block: 'start' }));
+  } else if (savedEntry) {
+    const savedScroll = Number(safeRead(scrollKey));
+    if (Number.isFinite(savedScroll) && savedScroll > 0) {
+      requestAnimationFrame(() => scrollTo({ top: savedScroll }));
+    }
+  }
+
+  let scrollFramePending = false;
+  addEventListener(
+    'scroll',
+    () => {
+      if (scrollFramePending) return;
+      scrollFramePending = true;
+      requestAnimationFrame(() => {
+        safeWrite(scrollKey, String(Math.round(scrollY)));
+        scrollFramePending = false;
+      });
+    },
+    { passive: true }
+  );
+}
+
 normalizeReaderMarkup();
 addMadregaOneSourcePills();
+setupLessonAccordion();
