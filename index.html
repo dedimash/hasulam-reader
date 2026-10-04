@@ -7,6 +7,7 @@
 [hidden]{display:none!important}a{color:var(--blue);text-underline-offset:4px}button{font:inherit;cursor:pointer;color:var(--ink);background:#202b3b;border:1px solid #465873;border-radius:10px;padding:9px 16px;min-height:44px}
 button:hover,a:hover{color:#fff}button:disabled{opacity:.5;cursor:default}:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .skip{position:absolute;top:-100px;right:12px;padding:8px;background:var(--paper)}.skip:focus{top:8px;z-index:10}
+.review-banner{text-align:center;font-size:13px;color:var(--gold);border-bottom:1px solid #303746;padding:6px}
 header,main,footer{max-width:1040px;margin:auto;padding:28px}header{border-bottom:1px solid #303746}.brand{font:700 44px Georgia,serif;color:var(--ink);margin:0}.tagline{color:var(--muted);margin:0 0 22px}
 nav{display:flex;flex-wrap:wrap;gap:10px}nav button{min-width:50px}nav button[aria-current=step]{background:var(--blue);color:#111722;border-color:var(--blue)}
 h1,h2,h3,h4,h5,h6{font-family:Georgia,'Times New Roman',serif;line-height:1.45;overflow-wrap:anywhere}h1{font-size:36px;margin:0 0 28px}h2{font-size:29px}h3{font-size:25px}p{margin:0 0 20px}
@@ -18,6 +19,9 @@ details{margin:38px 0}summary{cursor:pointer;color:var(--blue);padding:12px 0;fo
 .table-responsive{max-width:100%;overflow:auto}table{border-collapse:collapse;width:100%;font-size:16px}th,td{padding:8px;border:1px solid #465873;text-align:right}hr{border:0;border-top:1px solid #354154;margin:24px 0}
 dialog{width:min(640px,calc(100% - 32px));max-height:85vh;overflow:auto;border:1px solid #657794;border-radius:18px;background:var(--panel);color:var(--ink);padding:24px;font:18px/1.8 Arial,sans-serif}dialog::backdrop{background:#000b}dialog h2{margin-top:20px}dialog p{overflow-wrap:anywhere}.dialog-close{float:left}.source-excerpt{white-space:pre-wrap}footer{font-size:14px;color:var(--muted);text-align:center}
 @media(max-width:600px){body{font-size:17px}header,main,footer{padding:20px 16px}.brand{font-size:34px}h1{font-size:28px}h2{font-size:25px}h3{font-size:23px}blockquote{padding:18px}.illustration,.reflection,.takeaway,.doorway{padding:18px!important}nav{gap:7px}nav button{padding:8px 12px;min-width:40px}.pager button{font-size:15px;padding:10px}.source-list li{padding:16px}}
+
+.track-nav{margin-block:18px;gap:18px}.track-nav a{padding:6px 0;text-decoration:none;border-bottom:3px solid transparent}.track-nav a[aria-current="page"]{font-weight:700;border-bottom-color:currentColor}
+.breadcrumbs ol{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;padding:0}.breadcrumbs li{max-width:100%;overflow-wrap:anywhere}.breadcrumbs li+li::before{content:"/";margin-inline-end:16px}.current-parasha{border:2px solid currentColor;border-radius:12px;padding:20px;margin-block:24px}
 </style></head><body>
 <a class="skip" href="#reading">דילוג לשיעור</a>
 <header><p class="brand">הסולם</p><p class="tagline">מסע לימוד בכתבי בעל הסולם, מדרגה אחר מדרגה</p>
@@ -29,7 +33,7 @@ dialog{width:min(640px,calc(100% - 32px));max-height:85vh;overflow:auto;border:1
 <button type="button" data-step="5" aria-controls="lesson-5" aria-label="מדרגה 5 — מהו הצמצום הראשון?">5</button>
 <button type="button" data-step="6" aria-controls="lesson-6" aria-label="מדרגה 6 — איך אפשר לקבל בלי להיפרד?">6</button>
 <button type="button" data-step="7" aria-controls="lesson-7" aria-label="מדרגה 7 — איך הרצון יודע כמה לקבל?">7</button>
-</nav></header><main id="reading" tabindex="-1">
+</nav><nav class="track-nav" aria-label="מסלולי לימוד"><a href="./" aria-current="page">מסע המדרגות</a><a href="parasha/">פרשת השבוע</a></nav></header><main id="reading" tabindex="-1">
 <section class="lesson" id="lesson-1" aria-labelledby="lesson-title-1">
 <p class="lesson-number">מדרגה 1 מתוך 7</p><h1 id="lesson-title-1" tabindex="-1">מדרגה 1 — לפני שהיה מי שיקבל</h1>
 <div class="lesson-prose" id="prose-1"><article aria-label="ביאור שלנו" class="passage"><div class="canonical-text"><span class="block-tag">ביאור / התבוננות שלנו</span><p>אני רוצה לבקש ממך לדמיין דבר אחד.</p>
